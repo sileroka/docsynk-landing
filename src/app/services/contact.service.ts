@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of, delay } from 'rxjs';
 import { catchError, map, timeout } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { ContactFormData, ApiResponse, ContactResponse } from '../models/contact.model';
@@ -18,6 +18,19 @@ export class ContactService {
    * Submit a contact form
    */
   submitContactForm(formData: ContactFormData): Observable<ContactResponse> {
+    // In development mode without a backend, use mock response
+    if (!environment.production && !environment.sendgrid.enabled) {
+      console.log('📧 Contact Form Submission (DEV MODE - MOCK):', formData);
+      
+      // Simulate API delay
+      return of({
+        id: `mock-${Date.now()}`,
+        timestamp: new Date().toISOString(),
+        message: 'Your message has been received (development mode - no email sent)'
+      }).pipe(delay(1000)); // Simulate 1 second delay
+    }
+
+    // Production or configured backend
     return this.http.post<ApiResponse<ContactResponse>>(
       `${this.apiUrl}/contact`,
       formData

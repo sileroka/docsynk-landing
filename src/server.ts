@@ -6,7 +6,19 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
+import { config } from 'dotenv';
 import { handleContactSubmission } from './api/contact.handler';
+
+// Load environment variables from .env file
+config();
+
+// Log SendGrid configuration status (without exposing sensitive data)
+console.log('=== SendGrid Configuration ===');
+console.log('API Key:', process.env['SENDGRID_API_KEY'] ? '✓ SET' : '✗ NOT SET');
+console.log('From Email:', process.env['SENDGRID_FROM_EMAIL'] || '✗ NOT SET');
+console.log('To Email:', process.env['SENDGRID_TO_EMAIL'] || '✗ NOT SET');
+console.log('Environment:', process.env['NODE_ENV'] || 'development');
+console.log('==============================\n');
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
