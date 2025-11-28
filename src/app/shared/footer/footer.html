@@ -5,12 +5,17 @@
         <!-- Column 1: Logo & Description -->
         <div class="footer-column brand-column">
           <div class="footer-logo">
-            <i class="pi pi-box logo-icon"></i>
+            <img
+              src="/docsynk_full.png"
+              alt="DocSynk Logo"
+              class="logo-image"
+            />
             <span class="logo-text">DocSynk</span>
           </div>
           <p class="footer-description">
-            Streamline your international shipping documentation with AI-powered automation.
-            Save time, reduce errors, and ensure compliance across 47 countries.
+            Streamline your international shipping documentation with AI-powered
+            automation. Save time, reduce errors, and ensure compliance across
+            47 countries.
           </p>
           <div class="trust-badges">
             <span class="badge">SOC 2</span>
@@ -24,7 +29,11 @@
           <h3 class="footer-title">Product</h3>
           <ul class="footer-links">
             <li *ngFor="let link of productLinks">
-              <a *ngIf="link.route" [routerLink]="link.route" class="footer-link">
+              <a
+                *ngIf="link.route"
+                [routerLink]="link.route"
+                class="footer-link"
+              >
                 <i class="pi pi-angle-right"></i>
                 {{ link.label }}
               </a>
@@ -41,7 +50,11 @@
           <h3 class="footer-title">Company</h3>
           <ul class="footer-links">
             <li *ngFor="let link of companyLinks">
-              <a *ngIf="link.route" [routerLink]="link.route" class="footer-link">
+              <a
+                *ngIf="link.route"
+                [routerLink]="link.route"
+                class="footer-link"
+              >
                 <i class="pi pi-angle-right"></i>
                 {{ link.label }}
               </a>
@@ -74,19 +87,20 @@
           </p>
           <form class="newsletter-form" (ngSubmit)="onNewsletterSubmit()">
             <p-inputgroup styleClass="newsletter-input">
-              <input 
-                pInputText 
+              <input
+                pInputText
                 type="email"
                 [(ngModel)]="newsletterEmail"
                 name="newsletterEmail"
                 placeholder="Enter your email"
                 required
               />
-              <p-button 
-                type="submit" 
+              <p-button
+                type="submit"
                 icon="pi pi-send"
                 [disabled]="!newsletterEmail"
-                styleClass="newsletter-button">
+                styleClass="newsletter-button"
+              >
               </p-button>
             </p-inputgroup>
           </form>
@@ -106,15 +120,16 @@
         <div class="copyright">
           <p>© {{ currentYear }} DocSynk. All rights reserved.</p>
         </div>
-        
+
         <div class="social-links">
-          <a 
+          <a
             *ngFor="let social of socialLinks"
             [href]="social.url"
             [attr.aria-label]="social.label"
             target="_blank"
             rel="noopener noreferrer"
-            class="social-link">
+            class="social-link"
+          >
             <i [class]="'pi ' + social.icon"></i>
           </a>
         </div>

@@ -1,1 +1,73 @@
-<p>features works!</p>
+<div class="features-page">
+  <!-- Header Section -->
+  <section class="features-hero">
+    <div class="hero-content">
+      <h1 class="page-title text-4xl md:text-6xl">Powerful Features for Modern Logistics</h1>
+      <p class="page-subtitle text-lg md:text-xl">
+        Everything you need to automate international shipping documentation and ensure compliance
+      </p>
+    </div>
+  </section>
+
+  <!-- Features Grid by Category -->
+  <section class="features-content">
+    <div class="section-container">
+      <div *ngFor="let category of categories" class="category-section">
+        <div class="category-header">
+          <i class="pi {{ getCategoryIcon(category) }} text-4xl text-primary"></i>
+          <h2 class="category-title text-3xl md:text-4xl">{{ category }}</h2>
+        </div>
+
+        <div class="features-grid grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <p-card *ngFor="let feature of getFeaturesByCategory(category)" class="feature-card">
+            <ng-template #header>
+              <div class="card-header">
+                <i class="pi {{ feature.icon }} text-5xl text-primary"></i>
+                <h3 class="feature-title text-xl md:text-2xl">{{ feature.title }}</h3>
+                <p class="feature-description text-sm md:text-base">{{ feature.description }}</p>
+              </div>
+            </ng-template>
+
+            <ul class="benefits-list">
+              <li *ngFor="let benefit of feature.benefits" class="benefit-item">
+                <i class="pi pi-check-circle text-primary"></i>
+                <span class="text-sm md:text-base">{{ benefit }}</span>
+              </li>
+            </ul>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="features-cta">
+    <div class="cta-content">
+      <h2 class="cta-title text-3xl md:text-4xl">Ready to Transform Your Documentation Workflow?</h2>
+      <p class="cta-subtitle text-base md:text-lg">
+        Start your 14-day free trial and see how DocSynk can save your team hours every day
+      </p>
+      <div class="cta-buttons flex flex-column sm:flex-row gap-3 justify-content-center">
+        <p-button 
+          label="Start Free Trial" 
+          icon="pi pi-arrow-right"
+          iconPos="right"
+          severity="success"
+          size="large"
+          [raised]="true"
+          routerLink="/demo-request"
+          class="w-full sm:w-auto"
+        />
+        <p-button 
+          label="Schedule Demo" 
+          icon="pi pi-calendar"
+          severity="secondary"
+          size="large"
+          [outlined]="true"
+          routerLink="/demo-request"
+          class="w-full sm:w-auto"
+        />
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,227 @@
+.about-page {
+  min-height: 100vh;
+  background: var(--surface-ground);
+}
+
+.about-hero {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-600) 100%);
+  color: white;
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+
+  .hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .page-title {
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .page-subtitle {
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+.story-section {
+  padding: 5rem 2rem;
+  background: var(--surface-0);
+
+  .section-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .story-text {
+    p {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: var(--text-color-secondary);
+      margin-bottom: 1.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.stats-section {
+  padding: 4rem 2rem;
+  background: var(--surface-ground);
+
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .stats-grid {
+    gap: 2rem;
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: 2rem;
+    background: var(--surface-0);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    .stat-value {
+      font-weight: 800;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--text-color-secondary);
+      font-weight: 500;
+    }
+  }
+}
+
+.mission-section {
+  padding: 5rem 2rem;
+  background: var(--surface-0);
+
+  .section-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .mission-content {
+    text-align: center;
+
+    .section-title {
+      font-weight: 700;
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .mission-text {
+      color: var(--text-color-secondary);
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.values-section {
+  padding: 5rem 2rem;
+  background: var(--surface-ground);
+
+  .section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-weight: 700;
+    color: var(--text-color);
+  }
+
+  .values-grid {
+    gap: 2rem;
+  }
+
+  .value-card {
+    height: 100%;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .value-content {
+      text-align: center;
+      padding: 1rem;
+
+      .value-title {
+        font-weight: 700;
+        color: var(--text-color);
+        margin-bottom: 1rem;
+      }
+
+      .value-description {
+        color: var(--text-color-secondary);
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+.about-cta {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-600) 100%);
+  color: white;
+  padding: 5rem 2rem;
+  text-align: center;
+
+  .cta-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .cta-subtitle {
+    opacity: 0.95;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+
+  .cta-buttons {
+    ::ng-deep .p-button {
+      min-width: 200px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    padding: 4rem 1.5rem 3rem;
+  }
+
+  .story-section,
+  .mission-section,
+  .values-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .stats-section {
+    padding: 3rem 1.5rem;
+
+    .stats-grid {
+      gap: 1rem;
+    }
+
+    .stat-card {
+      padding: 1.5rem;
+    }
+  }
+
+  .about-cta {
+    padding: 3rem 1.5rem;
+  }
+}

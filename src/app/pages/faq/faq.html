@@ -1,0 +1,70 @@
+<div class="faq-page">
+  <!-- Header Section -->
+  <section class="faq-hero">
+    <div class="hero-content">
+      <h1 class="page-title text-4xl md:text-6xl">
+        Frequently Asked Questions
+      </h1>
+      <p class="page-subtitle text-lg md:text-xl">
+        Everything you need to know about DocSynk. Can't find the answer?
+        Contact our support team.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Content -->
+  <section class="faq-content">
+    <div class="section-container">
+      <div *ngFor="let category of categories" class="category-section">
+        <h2 class="category-title text-2xl md:text-3xl">{{ category }}</h2>
+
+        <p-accordion
+          [multiple]="true"
+          expandIcon="pi pi-plus"
+          collapseIcon="pi pi-minus"
+        >
+          <p-accordionpanel *ngFor="let faq of getFaqsByCategory(category)">
+            <p-accordionheader>{{ faq.question }}</p-accordionheader>
+            <p-accordioncontent>
+              <p class="faq-answer text-sm md:text-base">{{ faq.answer }}</p>
+            </p-accordioncontent>
+          </p-accordionpanel>
+        </p-accordion>
+      </div>
+    </div>
+  </section>
+
+  <!-- Still Have Questions CTA -->
+  <section class="faq-cta">
+    <div class="cta-content">
+      <i class="pi pi-question-circle text-5xl md:text-6xl mb-4"></i>
+      <h2 class="cta-title text-3xl md:text-4xl">Still Have Questions?</h2>
+      <p class="cta-subtitle text-base md:text-lg">
+        Our team is here to help. Get in touch and we'll respond within 24
+        hours.
+      </p>
+      <div
+        class="cta-buttons flex flex-column sm:flex-row gap-3 justify-content-center"
+      >
+        <p-button
+          label="Contact Support"
+          icon="pi pi-envelope"
+          severity="success"
+          size="large"
+          [raised]="true"
+          routerLink="/contact"
+          class="w-full sm:w-auto"
+        />
+        <p-button
+          label="Schedule Demo"
+          icon="pi pi-calendar"
+          severity="secondary"
+          size="large"
+          [outlined]="true"
+          routerLink="/demo-request"
+          class="w-full sm:w-auto"
+        />
+      </div>
+    </div>
+  </section>
+</div>

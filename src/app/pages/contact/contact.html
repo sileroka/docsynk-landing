@@ -1,1 +1,285 @@
-<p>contact works!</p>
+<div class="contact-page">
+  <p-toast></p-toast>
+
+  <!-- Header Section -->
+  <section class="contact-hero">
+    <div class="hero-content">
+      <h1 class="page-title text-4xl md:text-6xl">Get in Touch</h1>
+      <p class="page-subtitle text-lg md:text-xl">
+        Have questions? We're here to help. Reach out to our team and we'll
+        respond within 24 hours.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Content -->
+  <section class="contact-content">
+    <div class="section-container">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <!-- Contact Form -->
+        <div class="lg:col-span-2">
+          <p-card class="contact-form-card">
+            <ng-template #header>
+              <div class="card-header">
+                <h2 class="text-2xl md:text-3xl font-bold">
+                  Send us a Message
+                </h2>
+                <p class="text-sm md:text-base text-color-secondary">
+                  Fill out the form below and we'll get back to you as soon as
+                  possible
+                </p>
+              </div>
+            </ng-template>
+
+            <form
+              [formGroup]="contactForm"
+              (ngSubmit)="onSubmit()"
+              class="contact-form"
+            >
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Name -->
+                <div class="field">
+                  <label
+                    for="name"
+                    class="block mb-2 font-semibold text-sm md:text-base"
+                    >Full Name *</label
+                  >
+                  <input
+                    pInputText
+                    id="name"
+                    formControlName="name"
+                    placeholder="John Doe"
+                    class="w-full"
+                    [class.ng-invalid]="isFieldInvalid('name')"
+                  />
+                  <small
+                    *ngIf="isFieldInvalid('name')"
+                    class="p-error block mt-1 text-xs md:text-sm"
+                  >
+                    {{ getErrorMessage("name") }}
+                  </small>
+                </div>
+
+                <!-- Email -->
+                <div class="field">
+                  <label
+                    for="email"
+                    class="block mb-2 font-semibold text-sm md:text-base"
+                    >Email Address *</label
+                  >
+                  <input
+                    pInputText
+                    id="email"
+                    type="email"
+                    formControlName="email"
+                    placeholder="john@company.com"
+                    class="w-full"
+                    [class.ng-invalid]="isFieldInvalid('email')"
+                  />
+                  <small
+                    *ngIf="isFieldInvalid('email')"
+                    class="p-error block mt-1 text-xs md:text-sm"
+                  >
+                    {{ getErrorMessage("email") }}
+                  </small>
+                </div>
+
+                <!-- Company -->
+                <div class="field">
+                  <label
+                    for="company"
+                    class="block mb-2 font-semibold text-sm md:text-base"
+                    >Company Name</label
+                  >
+                  <input
+                    pInputText
+                    id="company"
+                    formControlName="company"
+                    placeholder="Your Company"
+                    class="w-full"
+                  />
+                </div>
+
+                <!-- Phone -->
+                <div class="field">
+                  <label
+                    for="phone"
+                    class="block mb-2 font-semibold text-sm md:text-base"
+                    >Phone Number</label
+                  >
+                  <input
+                    pInputText
+                    id="phone"
+                    formControlName="phone"
+                    placeholder="+1 (555) 123-4567"
+                    class="w-full"
+                  />
+                </div>
+              </div>
+
+              <!-- Inquiry Type -->
+              <div class="field mt-4">
+                <label
+                  for="inquiryType"
+                  class="block mb-2 font-semibold text-sm md:text-base"
+                  >Inquiry Type *</label
+                >
+                <p-select
+                  id="inquiryType"
+                  formControlName="inquiryType"
+                  [options]="inquiryTypes"
+                  placeholder="Select an inquiry type"
+                  styleClass="w-full"
+                  [class.ng-invalid]="isFieldInvalid('inquiryType')"
+                ></p-select>
+                <small
+                  *ngIf="isFieldInvalid('inquiryType')"
+                  class="p-error block mt-1 text-xs md:text-sm"
+                >
+                  {{ getErrorMessage("inquiryType") }}
+                </small>
+              </div>
+
+              <!-- Subject -->
+              <div class="field mt-4">
+                <label
+                  for="subject"
+                  class="block mb-2 font-semibold text-sm md:text-base"
+                  >Subject *</label
+                >
+                <input
+                  pInputText
+                  id="subject"
+                  formControlName="subject"
+                  placeholder="Brief description of your inquiry"
+                  class="w-full"
+                  [class.ng-invalid]="isFieldInvalid('subject')"
+                />
+                <small
+                  *ngIf="isFieldInvalid('subject')"
+                  class="p-error block mt-1 text-xs md:text-sm"
+                >
+                  {{ getErrorMessage("subject") }}
+                </small>
+              </div>
+
+              <!-- Message -->
+              <div class="field mt-4">
+                <label
+                  for="message"
+                  class="block mb-2 font-semibold text-sm md:text-base"
+                  >Message *</label
+                >
+                <textarea
+                  pTextarea
+                  id="message"
+                  formControlName="message"
+                  rows="6"
+                  placeholder="Tell us more about how we can help..."
+                  class="w-full"
+                  [class.ng-invalid]="isFieldInvalid('message')"
+                ></textarea>
+                <small
+                  *ngIf="isFieldInvalid('message')"
+                  class="p-error block mt-1 text-xs md:text-sm"
+                >
+                  {{ getErrorMessage("message") }}
+                </small>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="mt-5">
+                <p-button
+                  type="submit"
+                  label="Send Message"
+                  icon="pi pi-send"
+                  iconPos="right"
+                  severity="success"
+                  size="large"
+                  [loading]="isSubmitting"
+                  [disabled]="isSubmitting"
+                  class="w-full sm:w-auto text-sm md:text-base"
+                ></p-button>
+              </div>
+            </form>
+          </p-card>
+        </div>
+
+        <!-- Contact Info Sidebar -->
+        <div class="contact-sidebar">
+          <!-- Contact Methods -->
+          <p-card class="contact-methods-card mb-4">
+            <ng-template #header>
+              <h3 class="text-xl md:text-2xl font-bold">Contact Information</h3>
+            </ng-template>
+
+            <div class="contact-methods">
+              <div *ngFor="let method of contactMethods" class="contact-method">
+                <i
+                  class="pi {{ method.icon }} text-2xl md:text-3xl text-primary"
+                ></i>
+                <div class="method-info">
+                  <div class="method-title text-sm font-semibold">
+                    {{ method.title }}
+                  </div>
+                  <a
+                    *ngIf="method.link"
+                    [href]="method.link"
+                    class="method-value text-sm md:text-base"
+                    >{{ method.value }}</a
+                  >
+                  <div
+                    *ngIf="!method.link"
+                    class="method-value text-sm md:text-base"
+                  >
+                    {{ method.value }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </p-card>
+
+          <!-- Office Location -->
+          <p-card class="office-card">
+            <ng-template #header>
+              <h3 class="text-xl md:text-2xl font-bold">Headquarters</h3>
+            </ng-template>
+
+            <div class="office-info">
+              <i
+                class="pi pi-map-marker text-3xl md:text-4xl text-primary mb-3"
+              ></i>
+              <p class="text-sm md:text-base mb-2">
+                <strong>DocSynk Inc.</strong>
+              </p>
+              <p class="text-sm md:text-base text-color-secondary">
+                123 Tech Boulevard<br />
+                Suite 500<br />
+                San Francisco, CA 94105<br />
+                United States
+              </p>
+            </div>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Callout -->
+  <section class="faq-callout">
+    <div class="callout-content">
+      <h2 class="callout-title text-2xl md:text-3xl">Have a Quick Question?</h2>
+      <p class="callout-text text-base md:text-lg">
+        Check out our FAQ section for instant answers to common questions
+      </p>
+      <p-button
+        label="View FAQs"
+        icon="pi pi-question-circle"
+        severity="secondary"
+        [outlined]="true"
+        routerLink="/faq"
+        class="text-sm md:text-base"
+      ></p-button>
+    </div>
+  </section>
+</div>

@@ -23,6 +23,7 @@ export class Footer {
     { label: 'Features', route: '/features' },
     { label: 'Pricing', route: '/pricing' },
     { label: 'ROI Calculator', route: '/roi-calculator' },
+    { label: 'FAQ', route: '/faq' },
     { label: 'API Docs', url: '#' },
     { label: 'Integrations', url: '#' }
   ];
