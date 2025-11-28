@@ -1,5 +1,76 @@
 /* You can add global styles to this file, and also import other style files */
 
+// DocSynk Brand Colors
+$docsynk-blue: #376db3;
+$docsynk-teal: #3dd0d1;
+$docsynk-dark-grey: #14191b;
+$docsynk-white: #ffffff;
+
+// CSS Variables for DocSynk Theme
+:root {
+  // Primary Colors
+  --primary-color: #{$docsynk-blue};
+  --primary-50: #{lighten($docsynk-blue, 40%)};
+  --primary-100: #{lighten($docsynk-blue, 30%)};
+  --primary-200: #{lighten($docsynk-blue, 20%)};
+  --primary-300: #{lighten($docsynk-blue, 10%)};
+  --primary-400: #{lighten($docsynk-blue, 5%)};
+  --primary-500: #{$docsynk-blue};
+  --primary-600: #{darken($docsynk-blue, 5%)};
+  --primary-700: #{darken($docsynk-blue, 10%)};
+  --primary-800: #{darken($docsynk-blue, 15%)};
+  --primary-900: #{darken($docsynk-blue, 20%)};
+
+  // Accent Colors (Teal)
+  --accent-color: #{$docsynk-teal};
+  --accent-50: #{lighten($docsynk-teal, 40%)};
+  --accent-100: #{lighten($docsynk-teal, 30%)};
+  --accent-200: #{lighten($docsynk-teal, 20%)};
+  --accent-300: #{lighten($docsynk-teal, 10%)};
+  --accent-400: #{lighten($docsynk-teal, 5%)};
+  --accent-500: #{$docsynk-teal};
+  --accent-600: #{darken($docsynk-teal, 5%)};
+  --accent-700: #{darken($docsynk-teal, 10%)};
+  --accent-800: #{darken($docsynk-teal, 15%)};
+  --accent-900: #{darken($docsynk-teal, 20%)};
+
+  // Surface Colors
+  --surface-0: #{$docsynk-white};
+  --surface-50: #f8f9fa;
+  --surface-100: #f1f3f5;
+  --surface-200: #e9ecef;
+  --surface-300: #dee2e6;
+  --surface-400: #ced4da;
+  --surface-500: #adb5bd;
+  --surface-600: #868e96;
+  --surface-700: #495057;
+  --surface-800: #343a40;
+  --surface-900: #{$docsynk-dark-grey};
+
+  // Text Colors
+  --text-color: #{$docsynk-dark-grey};
+  --text-color-secondary: #6c757d;
+  --text-color-muted: #868e96;
+
+  // Border Colors
+  --surface-border: #dee2e6;
+  --border-color: #dee2e6;
+
+  // Status Colors
+  --green-500: #22c55e;
+  --blue-500: #{$docsynk-blue};
+  --orange-500: #f97316;
+  --red-500: #ef4444;
+  --cyan-500: #{$docsynk-teal};
+  
+  // Shadows
+  --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-5: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -21,6 +92,18 @@ body {
 
 .text-secondary {
   color: var(--text-color-secondary) !important;
+}
+
+.text-accent {
+  color: var(--accent-color) !important;
+}
+
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.bg-accent {
+  background-color: var(--accent-color) !important;
 }
 
 // Smooth scrolling

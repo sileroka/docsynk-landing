@@ -34,14 +34,14 @@ export class Pricing implements OnInit {
   plans: PricingPlan[] = [
     {
       name: 'Starter',
-      price: 499,
+      price: 59,
       shipments: 'Up to 500 shipments/month',
       features: [
         'Basic document management',
         'Email support',
         'Single jurisdiction compliance',
         'Standard OCR processing',
-        '2 user accounts',
+        '3 user accounts',
         'API access',
         'Mobile app access'
       ],
@@ -49,7 +49,7 @@ export class Pricing implements OnInit {
     },
     {
       name: 'Professional',
-      price: 1499,
+      price: 899,
       shipments: 'Up to 2,500 shipments/month',
       features: [
         'Everything in Starter, plus:',

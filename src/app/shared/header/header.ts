@@ -95,7 +95,7 @@ export class Header implements OnInit {
   }
 
   navigateToLogin() {
-    console.log('Navigate to Login');
+    window.open('https://app.docsynk.cloud/login', '_blank');
   }
 
   navigateToTrial() {
