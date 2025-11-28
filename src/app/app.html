@@ -1,0 +1,8 @@
+<p-toast position="top-right"></p-toast>
+<p-progressbar *ngIf="(loadingService.loading$ | async)" mode="indeterminate" [style]="{'height': '4px', 'position': 'fixed', 'top': '0', 'left': '0', 'right': '0', 'z-index': '9999'}"></p-progressbar>
+
+<app-header></app-header>
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
+<app-footer></app-footer>

@@ -1,0 +1,540 @@
+.home-page {
+  width: 100%;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, var(--primary-50) 0%, var(--surface-0) 100%);
+  padding: 4rem 2rem;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.hero-headline {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-color);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--text-color-secondary);
+  margin: 0;
+  font-weight: 400;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta-primary,
+.cta-secondary {
+  ::ng-deep .p-button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+}
+
+.trust-badges {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 0;
+  flex-wrap: wrap;
+
+  p-divider {
+    height: 60px;
+  }
+}
+
+.badge-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.badge-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.badge-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.badge-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-color-secondary);
+}
+
+.hero-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-placeholder {
+  background: var(--surface-50);
+  border-radius: 12px;
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border: 2px dashed var(--surface-border);
+  color: var(--text-color-secondary);
+  min-height: 400px;
+  width: 100%;
+}
+
+// Tablet styles
+@media (max-width: 991px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero-headline {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-image {
+    order: -1;
+  }
+
+  .image-placeholder {
+    min-height: 300px;
+  }
+}
+
+// Mobile styles
+@media (max-width: 576px) {
+  .hero-section {
+    padding: 2rem 1rem;
+    min-height: auto;
+  }
+
+  .hero-headline {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    width: 100%;
+
+    p-button {
+      width: 100%;
+
+      ::ng-deep .p-button {
+        width: 100%;
+      }
+    }
+  }
+
+  .trust-badges {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+
+    p-divider {
+      display: none;
+    }
+  }
+
+  .image-placeholder {
+    padding: 2rem 1.5rem;
+    min-height: 250px;
+
+    i {
+      font-size: 4rem !important;
+    }
+
+    p {
+      font-size: 0.9rem !important;
+    }
+  }
+}
+
+// Common section styles
+.section-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  text-align: center;
+  color: var(--text-color-secondary);
+  margin-bottom: 3rem;
+}
+
+// Statistics Section
+.statistics-section {
+  padding: 5rem 2rem;
+  background: var(--surface-50);
+}
+
+.statistics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.stat-card {
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  ::ng-deep .p-card-body {
+    padding: 0;
+  }
+
+  ::ng-deep .p-card-content {
+    padding: 1.5rem;
+  }
+}
+
+.stat-icon-wrapper {
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--red-50) 0%, var(--red-100) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-icon {
+  font-size: 3rem;
+  color: var(--red-600);
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stat-number {
+  ::ng-deep .p-tag {
+    font-size: 2rem;
+    font-weight: 800;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+.stat-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.stat-description {
+  font-size: 1rem;
+  color: var(--text-color-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+// Solution Timeline Section
+.solution-section {
+  padding: 5rem 2rem;
+  background: var(--surface-0);
+}
+
+.solution-timeline {
+  margin-top: 3rem;
+
+  ::ng-deep .p-timeline-event-content {
+    width: 100%;
+  }
+
+  ::ng-deep .p-timeline-event-opposite {
+    display: none;
+  }
+}
+
+.timeline-card {
+  ::ng-deep .p-card-body {
+    padding: 0;
+  }
+
+  ::ng-deep .p-card-content {
+    padding: 2rem;
+  }
+}
+
+.timeline-content {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.timeline-icon {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  background: var(--primary-50);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    font-size: 2.5rem;
+  }
+}
+
+.timeline-text {
+  flex: 1;
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: var(--text-color);
+  }
+
+  p {
+    font-size: 1rem;
+    color: var(--text-color-secondary);
+    margin: 0 0 1rem 0;
+    line-height: 1.6;
+  }
+}
+
+.timeline-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--text-color);
+
+    i {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+  }
+}
+
+// Features Section
+.features-section {
+  padding: 5rem 2rem;
+  background: var(--surface-50);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.feature-panel {
+  ::ng-deep .p-panel-header {
+    background: var(--primary-color);
+    color: white;
+    border-radius: 8px 8px 0 0;
+    padding: 1.5rem;
+  }
+
+  ::ng-deep .p-panel-content {
+    padding: 2rem;
+    border: 1px solid var(--surface-border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+  }
+}
+
+.feature-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.feature-icon {
+  font-size: 1.75rem;
+  color: white;
+}
+
+.feature-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.5;
+
+    i {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    span {
+      flex: 1;
+    }
+  }
+}
+
+// Responsive styles for new sections
+@media (max-width: 991px) {
+  .statistics-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .timeline-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .timeline-icon {
+    width: 60px;
+    height: 60px;
+
+    i {
+      font-size: 2rem !important;
+    }
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .statistics-section,
+  .solution-section,
+  .features-section {
+    padding: 3rem 1rem;
+  }
+
+  .section-container {
+    padding: 0 1rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .stat-number {
+    ::ng-deep .p-tag {
+      font-size: 1.5rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  .stat-title {
+    font-size: 1.1rem;
+  }
+
+  .stat-description {
+    font-size: 0.9rem;
+  }
+
+  .timeline-text {
+    h3 {
+      font-size: 1.25rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+    }
+  }
+
+  .timeline-benefits li {
+    font-size: 0.9rem;
+  }
+
+  .feature-title {
+    font-size: 1.1rem;
+  }
+
+  .feature-list li {
+    font-size: 0.95rem;
+  }
+}

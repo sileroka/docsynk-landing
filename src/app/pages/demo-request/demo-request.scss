@@ -1,0 +1,344 @@
+.demo-request-page {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.demo-header {
+  background: linear-gradient(135deg, var(--primary-50) 0%, var(--surface-0) 100%);
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+}
+
+.header-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.page-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-color-secondary);
+  line-height: 1.6;
+}
+
+.demo-content {
+  padding: 4rem 2rem;
+  background: var(--surface-0);
+}
+
+.content-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+// Benefits Column
+.benefits-column {
+  position: sticky;
+  top: 100px;
+}
+
+.benefits-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.benefits-intro {
+  font-size: 1.1rem;
+  color: var(--text-color-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.benefit-card {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: var(--surface-50);
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.benefit-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  font-size: 1.5rem;
+}
+
+.benefit-content {
+  flex: 1;
+}
+
+.benefit-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.benefit-description {
+  font-size: 0.95rem;
+  color: var(--text-color-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.trust-indicators {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--green-50);
+  border-radius: 8px;
+  border-left: 4px solid var(--green-500);
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-color);
+
+  i {
+    color: var(--green-600);
+    font-size: 1.25rem;
+  }
+}
+
+// Form Column
+.form-column {
+  .demo-form-card {
+    ::ng-deep .p-card-body {
+      padding: 2rem;
+    }
+  }
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field-label {
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: 0.95rem;
+
+  .required {
+    color: var(--red-500);
+  }
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--surface-50);
+  border-radius: 6px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.checkbox-label {
+  cursor: pointer;
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.submit-button {
+  ::ng-deep .p-button {
+    padding: 0.875rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+}
+
+.privacy-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-color-secondary);
+  margin: 0;
+
+  i {
+    color: var(--green-600);
+  }
+}
+
+// Error styling
+.p-error {
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+::ng-deep {
+  .ng-invalid.ng-dirty {
+    border-color: var(--red-500);
+  }
+
+  .p-inputtext.ng-invalid.ng-dirty {
+    border-color: var(--red-500);
+  }
+
+  .p-select.ng-invalid.ng-dirty,
+  .p-multiselect.ng-invalid.ng-dirty {
+    .p-select-label,
+    .p-multiselect-label {
+      border-color: var(--red-500);
+    }
+  }
+
+  textarea.ng-invalid.ng-dirty {
+    border-color: var(--red-500);
+  }
+}
+
+// Responsive styles
+@media (max-width: 991px) {
+  .demo-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .benefits-column {
+    position: static;
+  }
+
+  .page-title {
+    font-size: 2.25rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .benefits-title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .demo-header,
+  .demo-content {
+    padding: 2rem 1rem;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+  }
+
+  .page-subtitle {
+    font-size: 1rem;
+  }
+
+  .benefits-title {
+    font-size: 1.5rem;
+  }
+
+  .benefits-intro {
+    font-size: 1rem;
+  }
+
+  .benefit-card {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .benefit-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+
+  .benefit-title {
+    font-size: 1.1rem;
+  }
+
+  .benefit-description {
+    font-size: 0.9rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-column .demo-form-card {
+    ::ng-deep .p-card-body {
+      padding: 1.5rem;
+    }
+  }
+
+  .trust-indicators {
+    padding: 1rem;
+  }
+
+  .trust-item {
+    font-size: 0.875rem;
+
+    i {
+      font-size: 1.1rem;
+    }
+  }
+}

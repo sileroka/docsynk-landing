@@ -1,0 +1,538 @@
+.customer-proof-page {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.proof-header {
+  background: linear-gradient(135deg, var(--primary-50) 0%, var(--surface-0) 100%);
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+}
+
+.header-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.page-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-color-secondary);
+  line-height: 1.6;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  text-align: center;
+  color: var(--text-color-secondary);
+  margin-bottom: 3rem;
+}
+
+// Testimonials Section
+.testimonials-section {
+  padding: 5rem 2rem;
+  background: var(--surface-0);
+}
+
+.carousel-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.testimonials-carousel {
+  ::ng-deep .p-carousel-content {
+    padding: 2rem 0;
+  }
+
+  ::ng-deep .p-carousel-prev,
+  ::ng-deep .p-carousel-next {
+    color: var(--primary-color);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      background: var(--primary-50);
+    }
+  }
+
+  ::ng-deep .p-carousel-indicators {
+    padding: 1rem 0;
+
+    .p-carousel-indicator button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--surface-300);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: var(--primary-300);
+      }
+    }
+
+    .p-carousel-indicator.p-highlight button {
+      background: var(--primary-color);
+      width: 32px;
+      border-radius: 6px;
+    }
+  }
+}
+
+.testimonial-card {
+  margin: 0 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--surface-200);
+
+  ::ng-deep .p-card-body {
+    padding: 3rem;
+  }
+}
+
+.testimonial-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.rating {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+
+  i {
+    color: #fbbf24;
+    font-size: 1.5rem;
+  }
+}
+
+.quote {
+  margin: 0;
+  position: relative;
+}
+
+.quote-icon {
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  font-size: 3rem;
+  color: var(--primary-100);
+  opacity: 0.5;
+}
+
+.quote-text {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  font-style: italic;
+  margin: 0;
+  padding-left: 2rem;
+}
+
+.author-section {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 2px solid var(--surface-100);
+}
+
+.author-avatar {
+  flex-shrink: 0;
+  
+  ::ng-deep .p-avatar {
+    background: var(--primary-color);
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+}
+
+.author-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.author-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.author-title {
+  font-size: 1rem;
+  color: var(--text-color-secondary);
+}
+
+.author-company {
+  font-size: 0.95rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+// Customer Logos Section
+.logos-section {
+  padding: 4rem 2rem;
+  background: var(--surface-50);
+  text-align: center;
+}
+
+.logos-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color-secondary);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.logos-grid {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.logos-avatargroup {
+  ::ng-deep .p-avatar-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  ::ng-deep .p-avatar {
+    width: 80px;
+    height: 80px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.logos-note {
+  font-size: 1rem;
+  color: var(--text-color-secondary);
+  margin: 0;
+  font-style: italic;
+}
+
+// Statistics Section
+.statistics-section {
+  padding: 5rem 2rem;
+  background: var(--surface-0);
+}
+
+.statistics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2.5rem 1.5rem;
+  background: var(--surface-50);
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  &.stat-primary {
+    border-color: var(--primary-200);
+    
+    .stat-icon {
+      background: var(--primary-500);
+    }
+  }
+
+  &.stat-green {
+    border-color: var(--green-200);
+    
+    .stat-icon {
+      background: var(--green-500);
+    }
+  }
+
+  &.stat-blue {
+    border-color: var(--blue-200);
+    
+    .stat-icon {
+      background: var(--blue-500);
+    }
+  }
+
+  &.stat-purple {
+    border-color: var(--purple-200);
+    
+    .stat-icon {
+      background: var(--purple-500);
+    }
+  }
+}
+
+.stat-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+
+  i {
+    font-size: 2.5rem;
+  }
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stat-value {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-color);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 1.1rem;
+  color: var(--text-color-secondary);
+  font-weight: 500;
+}
+
+// CTA Section
+.cta-section {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-700) 100%);
+  text-align: center;
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.cta-subtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-primary,
+.cta-secondary {
+  ::ng-deep .p-button {
+    padding: 0.875rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+}
+
+.cta-secondary {
+  ::ng-deep .p-button {
+    background: white;
+    color: var(--primary-color);
+    border-color: white;
+
+    &:hover {
+      background: var(--primary-50);
+      border-color: var(--primary-50);
+    }
+  }
+}
+
+// Responsive styles
+@media (max-width: 991px) {
+  .page-title {
+    font-size: 2.25rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .statistics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonial-card {
+    ::ng-deep .p-card-body {
+      padding: 2rem;
+    }
+  }
+
+  .quote-text {
+    font-size: 1.1rem;
+  }
+
+  .stat-value {
+    font-size: 2.5rem;
+  }
+
+  .cta-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .proof-header,
+  .testimonials-section,
+  .logos-section,
+  .statistics-section,
+  .cta-section {
+    padding: 2rem 1rem;
+  }
+
+  .section-container {
+    padding: 0 1rem;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+  }
+
+  .page-subtitle {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .testimonial-card {
+    margin: 0 0.5rem;
+
+    ::ng-deep .p-card-body {
+      padding: 1.5rem;
+    }
+  }
+
+  .quote-text {
+    font-size: 1rem;
+    padding-left: 1rem;
+  }
+
+  .quote-icon {
+    font-size: 2rem;
+    top: -15px;
+    left: -5px;
+  }
+
+  .author-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .author-name {
+    font-size: 1.1rem;
+  }
+
+  .statistics-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    padding: 2rem 1rem;
+  }
+
+  .stat-icon {
+    width: 64px;
+    height: 64px;
+
+    i {
+      font-size: 2rem;
+    }
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+
+  .stat-label {
+    font-size: 0.95rem;
+  }
+
+  .cta-title {
+    font-size: 1.75rem;
+  }
+
+  .cta-subtitle {
+    font-size: 1rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .logos-avatargroup {
+    ::ng-deep .p-avatar {
+      width: 60px;
+      height: 60px;
+      font-size: 1rem;
+    }
+  }
+}

@@ -1,45 +1,59 @@
-# DocSynk Landing Page
+# DocsynkLandingTemp
 
-A professional landing page for DocSynk - Document management system built specifically for international logistics companies.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.5.
 
-## Overview
+## Development server
 
-DocSynk handles bills of lading, customs forms, and shipping manifests with multi-jurisdiction compliance. Features include:
+To start a local development server, run:
 
-- **AI-Powered OCR** - Trained specifically on logistics documents for 99.9% accuracy
-- **Detention Charge Prevention** - Automated alerts and deadline tracking
-- **Freight Forwarder Collaboration** - Real-time document sharing with partners
-- **Multi-Jurisdiction Compliance** - 150+ countries supported
-- **Multi-Tenant SaaS** - Subdomain routing for enterprise clients
+```bash
+ng serve
+```
 
-## Key Value Proposition
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-Solves the **$47,000/year documentation inefficiency problem** in logistics.
+## Code scaffolding
 
-## Tech Stack
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-- **Backend**: Python/FastAPI
-- **Frontend**: Angular
-- **Architecture**: Multi-tenant SaaS with subdomain routing
+```bash
+ng generate component component-name
+```
 
-## Landing Page
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-The landing page (`index.html`) is a static, responsive single-page website designed for customer acquisition. It features:
+```bash
+ng generate --help
+```
 
-- Responsive design for all device sizes
-- Modern, professional UI
-- Key sections:
-  - Hero with value proposition
-  - Features overview
-  - Document types supported
-  - Global compliance information
-  - Pricing tiers
-  - Call-to-action sections
+## Building
 
-## Getting Started
+To build the project run:
 
-Simply open `index.html` in a web browser to view the landing page.
+```bash
+ng build
+```
 
-## License
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-Copyright © 2024 DocSynk. All rights reserved.
+## Running unit tests
+
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

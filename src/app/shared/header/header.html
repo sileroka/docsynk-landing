@@ -1,0 +1,67 @@
+<header class="header-container" [class.scrolled]="isScrolled">
+  <div class="header-content">
+    <div class="logo-section" (click)="navigateHome()">
+      <i class="pi pi-sync text-4xl text-primary"></i>
+      <span class="logo-text">DocSynk</span>
+    </div>
+
+    <!-- Desktop Menu -->
+    <p-menubar [model]="menuItems" class="main-menubar hidden lg:flex">
+      <ng-template #end>
+        <div class="header-actions">
+          <p-button 
+            label="Login" 
+            [outlined]="true"
+            severity="secondary"
+            (onClick)="navigateToLogin()"
+            class="login-btn"
+          />
+          <p-button 
+            label="Start Free Trial" 
+            severity="success"
+            (onClick)="navigateToTrial()"
+            class="trial-btn"
+          />
+        </div>
+      </ng-template>
+    </p-menubar>
+
+    <!-- Mobile Menu Icon -->
+    <div class="mobile-menu-toggle lg:hidden">
+      <p-button 
+        icon="pi pi-bars" 
+        [text]="true" 
+        severity="secondary"
+        (onClick)="toggleMobileMenu()"
+      />
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <p-drawer [(visible)]="isMobileMenuVisible" position="right" [style]="{width: '280px'}">
+      <ng-template pTemplate="header">
+        <div class="flex align-items-center gap-2">
+          <i class="pi pi-sync text-2xl text-primary"></i>
+          <span class="font-bold text-xl">DocSynk</span>
+        </div>
+      </ng-template>
+      
+      <p-menu [model]="menuItems" styleClass="w-full border-none"></p-menu>
+      
+      <div class="mt-4 flex flex-column gap-2">
+        <p-button 
+          label="Login" 
+          [outlined]="true"
+          severity="secondary"
+          (onClick)="navigateToLogin(); isMobileMenuVisible = false"
+          class="w-full"
+        />
+        <p-button 
+          label="Start Free Trial" 
+          severity="success"
+          (onClick)="navigateToTrial(); isMobileMenuVisible = false"
+          class="w-full"
+        />
+      </div>
+    </p-drawer>
+  </div>
+</header>

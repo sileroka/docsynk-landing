@@ -1,0 +1,160 @@
+<div class="customer-proof-page">
+  <!-- Header Section -->
+  <div class="proof-header">
+    <div class="header-content">
+      <h1 class="page-title">Trusted by Leading Logistics Companies</h1>
+      <p class="page-subtitle">
+        Join hundreds of companies saving millions in documentation costs and shipping delays.
+      </p>
+    </div>
+  </div>
+
+  <!-- Testimonials Carousel Section -->
+  <div class="testimonials-section">
+    <div class="section-container">
+      <h2 class="section-title">What Our Customers Say</h2>
+      <p class="section-subtitle">
+        Real results from real companies transforming their shipping operations
+      </p>
+
+      <div class="carousel-wrapper">
+        <!-- Loading Skeleton -->
+        <div *ngIf="isLoadingTestimonials" class="skeleton-wrapper">
+          <p-card styleClass="testimonial-card">
+            <div class="testimonial-content">
+              <div class="rating">
+                <p-skeleton width="120px" height="20px"></p-skeleton>
+              </div>
+              
+              <blockquote class="quote">
+                <p-skeleton width="100%" height="120px" styleClass="mb-3"></p-skeleton>
+              </blockquote>
+              
+              <div class="author-section">
+                <p-skeleton shape="circle" size="4rem" styleClass="mr-3"></p-skeleton>
+                <div class="author-info" style="flex: 1;">
+                  <p-skeleton width="150px" height="20px" styleClass="mb-2"></p-skeleton>
+                  <p-skeleton width="120px" height="16px" styleClass="mb-2"></p-skeleton>
+                  <p-skeleton width="180px" height="16px"></p-skeleton>
+                </div>
+              </div>
+            </div>
+          </p-card>
+        </div>
+
+        <!-- Actual Carousel -->
+        <p-carousel
+          *ngIf="!isLoadingTestimonials"
+          [value]="testimonials"
+          [numVisible]="1"
+          [numScroll]="1"
+          [circular]="true"
+          [autoplayInterval]="5000"
+          [responsiveOptions]="responsiveOptions"
+          styleClass="testimonials-carousel">
+          <ng-template let-testimonial pTemplate="item">
+            <p-card styleClass="testimonial-card">
+              <div class="testimonial-content">
+                <div class="rating">
+                  <i *ngFor="let star of getStars(testimonial.rating)" class="pi pi-star-fill"></i>
+                </div>
+
+                <blockquote class="quote">
+                  <i class="pi pi-quote-left quote-icon"></i>
+                  <p class="quote-text">{{ testimonial.quote }}</p>
+                </blockquote>
+
+                <div class="author-section">
+                  <p-avatar
+                    [label]="testimonial.avatar"
+                    size="xlarge"
+                    shape="circle"
+                    styleClass="author-avatar">
+                  </p-avatar>
+                  <div class="author-info">
+                    <div class="author-name">{{ testimonial.author }}</div>
+                    <div class="author-title">{{ testimonial.title }}</div>
+                    <div class="author-company">{{ testimonial.company }}</div>
+                  </div>
+                </div>
+              </div>
+            </p-card>
+          </ng-template>
+        </p-carousel>
+      </div>
+    </div>
+  </div>
+
+  <!-- Customer Logos Section -->
+  <div class="logos-section">
+    <div class="section-container">
+      <h3 class="logos-title">Powering Operations For</h3>
+      
+      <div class="logos-grid">
+        <p-avatargroup styleClass="logos-avatargroup">
+          <p-avatar
+            *ngFor="let logo of customerLogos; let i = index"
+            [label]="logo"
+            size="xlarge"
+            shape="circle"
+            [class]="getAvatarColor(i)">
+          </p-avatar>
+        </p-avatargroup>
+      </div>
+      
+      <p class="logos-note">
+        And 200+ other companies across 6 continents
+      </p>
+    </div>
+  </div>
+
+  <!-- Statistics Section -->
+  <div class="statistics-section">
+    <div class="section-container">
+      <div class="statistics-grid">
+        <div
+          *ngFor="let stat of statistics"
+          class="stat-card"
+          [class]="'stat-' + stat.color"
+          pAnimateOnScroll
+          enterClass="fadeinup"
+          leaveClass="fadeout">
+          <div class="stat-icon">
+            <i [class]="'pi ' + stat.icon"></i>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">{{ stat.value }}</div>
+            <div class="stat-label">{{ stat.label }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="cta-section">
+    <div class="cta-content">
+      <h2 class="cta-title">Ready to Join Them?</h2>
+      <p class="cta-subtitle">
+        See how DocSynk can transform your shipping documentation process
+      </p>
+      <div class="cta-buttons">
+        <p-button
+          label="Start Free Trial"
+          icon="pi pi-check"
+          routerLink="/demo-request"
+          styleClass="cta-primary"
+          [raised]="true">
+        </p-button>
+        <p-button
+          label="View Pricing"
+          icon="pi pi-dollar"
+          routerLink="/pricing"
+          styleClass="cta-secondary"
+          severity="secondary"
+          [outlined]="true">
+        </p-button>
+      </div>
+    </div>
+  </div>
+</div>

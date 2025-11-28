@@ -1,0 +1,273 @@
+<div class="home-page">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-headline text-3xl md:text-5xl lg:text-6xl">
+          Stop Losing Money to Documentation Delays
+        </h1>
+        <p class="hero-subtitle text-base md:text-lg lg:text-xl">
+          International logistics companies waste 3-4 hours daily on document management. 
+          DocSynk cuts that to 30 minutes while ensuring 100% compliance.
+        </p>
+        
+        <div class="hero-cta flex flex-column sm:flex-row gap-3">
+          <p-button 
+            label="Start 14-Day Free Trial" 
+            icon="pi pi-arrow-right"
+            iconPos="right"
+            severity="success"
+            size="large"
+            [raised]="true"
+            (onClick)="startFreeTrial()"
+            class="cta-primary w-full sm:w-auto"
+          />
+          <p-button 
+            label="Watch Demo" 
+            icon="pi pi-play"
+            severity="secondary"
+            size="large"
+            [outlined]="true"
+            (onClick)="watchDemo()"
+            class="cta-secondary w-full sm:w-auto"
+          />
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="trust-badges flex-column md:flex-row">
+          <div class="badge-item">
+            <i class="pi pi-shield text-2xl md:text-3xl text-primary"></i>
+            <div class="badge-text">
+              <span class="badge-title text-sm md:text-base">SOC 2</span>
+              <span class="badge-subtitle text-xs md:text-sm">Compliant</span>
+            </div>
+          </div>
+          
+          <p-divider layout="vertical" class="hidden md:block" />
+          
+          <div class="badge-item">
+            <i class="pi pi-verified text-2xl md:text-3xl text-primary"></i>
+            <div class="badge-text">
+              <span class="badge-title">ISO 27001</span>
+              <span class="badge-subtitle">Certified</span>
+            </div>
+          </div>
+          
+          <p-divider layout="vertical" />
+          
+          <div class="badge-item">
+            <i class="pi pi-lock text-3xl text-primary"></i>
+            <div class="badge-text">
+              <span class="badge-title">GDPR</span>
+              <span class="badge-subtitle">Ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="image-placeholder">
+          <i class="pi pi-file text-9xl"></i>
+          <p class="text-xl">Document Management Visualization</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem/Statistics Section -->
+  <section class="statistics-section">
+    <div class="section-container">
+      <h2 class="section-title">The Cost of Documentation Inefficiency</h2>
+      <p class="section-subtitle">Real numbers from international logistics operations</p>
+
+      <div class="statistics-grid">
+        <p-card class="stat-card" pAnimateOnScroll enterClass="fadeinleft">
+          <ng-template #header>
+            <div class="stat-icon-wrapper">
+              <i class="pi pi-dollar stat-icon"></i>
+            </div>
+          </ng-template>
+          <div class="stat-content">
+            <p-tag value="$47,000" severity="danger" class="stat-number"></p-tag>
+            <h3 class="stat-title">Per Employee Cost</h3>
+            <p class="stat-description">Average annual cost per employee from documentation inefficiencies</p>
+          </div>
+        </p-card>
+
+        <p-card class="stat-card" pAnimateOnScroll enterClass="fadein">
+          <ng-template #header>
+            <div class="stat-icon-wrapper">
+              <i class="pi pi-clock stat-icon"></i>
+            </div>
+          </ng-template>
+          <div class="stat-content">
+            <p-tag value="23%" severity="danger" class="stat-number"></p-tag>
+            <h3 class="stat-title">Delayed Shipments</h3>
+            <p class="stat-description">Of shipments delayed due to documentation errors</p>
+          </div>
+        </p-card>
+
+        <p-card class="stat-card" pAnimateOnScroll enterClass="fadeinright">
+          <ng-template #header>
+            <div class="stat-icon-wrapper">
+              <i class="pi pi-exclamation-triangle stat-icon"></i>
+            </div>
+          </ng-template>
+          <div class="stat-content">
+            <p-tag value="€8,000" severity="danger" class="stat-number"></p-tag>
+            <h3 class="stat-title">Compliance Fines</h3>
+            <p class="stat-description">Average customs fine for non-compliant documentation</p>
+          </div>
+        </p-card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Timeline Section -->
+  <section class="solution-section">
+    <div class="section-container">
+      <h2 class="section-title">How DocSynk Solves This</h2>
+      <p class="section-subtitle">A systematic approach to documentation excellence</p>
+
+      <p-timeline [value]="solutionSteps" class="solution-timeline">
+        <ng-template #content let-step>
+          <p-card class="timeline-card">
+            <div class="timeline-content">
+              <div class="timeline-icon">
+                <i [class]="step.icon"></i>
+              </div>
+              <div class="timeline-text">
+                <h3>{{ step.title }}</h3>
+                <p>{{ step.description }}</p>
+                <ul class="timeline-benefits">
+                  <li *ngFor="let benefit of step.benefits">
+                    <i class="pi pi-check-circle text-green-500"></i>
+                    <span>{{ benefit }}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </p-card>
+        </ng-template>
+      </p-timeline>
+    </div>
+  </section>
+
+  <!-- Features Grid Section -->
+  <section class="features-section">
+    <div class="section-container">
+      <h2 class="section-title">Enterprise-Grade Features</h2>
+      <p class="section-subtitle">Built for international logistics complexity</p>
+
+      <div class="features-grid">
+        <p-panel [toggleable]="false" class="feature-panel">
+          <ng-template #header>
+            <div class="feature-header">
+              <i class="pi pi-globe feature-icon"></i>
+              <span class="feature-title">Multi-Jurisdiction Compliance Engine</span>
+            </div>
+          </ng-template>
+          <ul class="feature-list">
+            <li>
+              <i class="pi pi-check text-primary"></i>
+              <span>EU customs (EORI, ENS, EXS)</span>
+            </li>
+            <li>
+              <i class="pi pi-check text-primary"></i>
+              <span>US CBP (ISF, ACE)</span>
+            </li>
+            <li>
+              <i class="pi pi-check text-primary"></i>
+              <span>China customs (CCD, CIQ)</span>
+            </li>
+            <li>
+              <i class="pi pi-check text-primary"></i>
+              <span>Automatic regulation updates</span>
+            </li>
+          </ul>
+        </p-panel>
+
+        <p-panel [toggleable]="false" class="feature-panel">
+          <ng-template #header>
+            <div class="feature-header">
+              <i class="pi pi-file-edit feature-icon"></i>
+              <span class="feature-title">Smart Document Processing</span>
+            </div>
+          </ng-template>
+          <ul class="feature-list">
+            <li>
+              <i class="pi pi-check text-primary"></i>
+              <span>99.5% OCR accuracy</span>
+            </li>
+            <li>
+              <i class="pi pi-check text-primary"></i>
+              <span>Auto-link related documents</span>
+            </li>
+            <li>
+              <i class="pi pi-check text-primary"></i>
+              <span>Intelligent duplicate detection</span>
+            </li>
+            <li>
+              <i class="pi pi-check text-primary"></i>
+              <span>Multi-language support</span>
+            </li>
+          </ul>
+        </p-panel>
+
+        <p-panel [toggleable]="false" class="feature-panel">
+          <ng-template #header>
+            <div class="feature-header">
+              <i class="pi pi-users feature-icon"></i>
+              <span class="feature-title">Real-Time Collaboration</span>
+            </div>
+          </ng-template>
+          <ul class="feature-list">
+            <li>
+              <i class="pi pi-check text-primary"></i>
+              <span>Role-based access control</span>
+            </li>
+            <li>
+              <i class="pi pi-check text-primary"></i>
+              <span>Real-time document tracking</span>
+            </li>
+            <li>
+              <i class="pi pi-check text-primary"></i>
+              <span>Customizable approval workflows</span>
+            </li>
+            <li>
+              <i class="pi pi-check text-primary"></i>
+              <span>Audit trail & version history</span>
+            </li>
+          </ul>
+        </p-panel>
+
+        <p-panel [toggleable]="false" class="feature-panel">
+          <ng-template #header>
+            <div class="feature-header">
+              <i class="pi pi-sitemap feature-icon"></i>
+              <span class="feature-title">Integration Hub</span>
+            </div>
+          </ng-template>
+          <ul class="feature-list">
+            <li>
+              <i class="pi pi-check text-primary"></i>
+              <span>SAP & Oracle connectors</span>
+            </li>
+            <li>
+              <i class="pi pi-check text-primary"></i>
+              <span>CargoWise integration</span>
+            </li>
+            <li>
+              <i class="pi pi-check text-primary"></i>
+              <span>RESTful API access</span>
+            </li>
+            <li>
+              <i class="pi pi-check text-primary"></i>
+              <span>EDI X12 & EDIFACT support</span>
+            </li>
+          </ul>
+        </p-panel>
+      </div>
+    </div>
+  </section>
+</div>

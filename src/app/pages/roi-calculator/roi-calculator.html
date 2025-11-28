@@ -1,0 +1,192 @@
+<div class="roi-calculator-page">
+  <!-- Header Section -->
+  <div class="roi-header">
+    <div class="header-content">
+      <h1 class="page-title">Calculate Your Savings</h1>
+      <p class="page-subtitle">
+        See how much time and money your team could save with DocSynk's automated document processing.
+      </p>
+    </div>
+  </div>
+
+  <!-- Calculator Section -->
+  <div class="calculator-section">
+    <div class="section-container">
+      <div class="calculator-grid">
+        <!-- Input Controls -->
+        <div class="inputs-column">
+          <p-card styleClass="inputs-card">
+            <ng-template pTemplate="header">
+              <div class="card-header">
+                <h2 class="card-title">Your Current Operation</h2>
+                <p class="card-subtitle">Adjust the values to match your shipping volume</p>
+              </div>
+            </ng-template>
+
+            <div class="input-fields">
+              <div class="input-field">
+                <label for="monthlyShipments" class="field-label">
+                  <i class="pi pi-box"></i>
+                  Monthly Shipments
+                </label>
+                <p-inputnumber
+                  inputId="monthlyShipments"
+                  [(ngModel)]="monthlyShipments"
+                  (ngModelChange)="onShipmentsChange()"
+                  [min]="1"
+                  [max]="10000"
+                  [step]="10"
+                  [showButtons]="true"
+                  buttonLayout="horizontal"
+                  incrementButtonIcon="pi pi-plus"
+                  decrementButtonIcon="pi pi-minus"
+                  styleClass="w-full">
+                </p-inputnumber>
+                <small class="field-hint">Number of international shipments per month</small>
+              </div>
+
+              <div class="input-field">
+                <label for="docsPerShipment" class="field-label">
+                  <i class="pi pi-file"></i>
+                  Documents per Shipment
+                </label>
+                <p-inputnumber
+                  inputId="docsPerShipment"
+                  [(ngModel)]="docsPerShipment"
+                  (ngModelChange)="onDocsChange()"
+                  [min]="1"
+                  [max]="50"
+                  [step]="1"
+                  [showButtons]="true"
+                  buttonLayout="horizontal"
+                  incrementButtonIcon="pi pi-plus"
+                  decrementButtonIcon="pi pi-minus"
+                  styleClass="w-full">
+                </p-inputnumber>
+                <small class="field-hint">Average documents required per shipment</small>
+              </div>
+
+              <p-divider></p-divider>
+
+              <div class="assumptions">
+                <h3 class="assumptions-title">Calculation Assumptions</h3>
+                <ul class="assumptions-list">
+                  <li>
+                    <i class="pi pi-clock"></i>
+                    <span>15 minutes manual processing per document</span>
+                  </li>
+                  <li>
+                    <i class="pi pi-dollar"></i>
+                    <span>$50 per hour labor cost</span>
+                  </li>
+                  <li>
+                    <i class="pi pi-chart-line"></i>
+                    <span>90% time reduction with DocSynk automation</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </p-card>
+
+          <!-- Chart Card -->
+          <p-card styleClass="chart-card">
+            <ng-template pTemplate="header">
+              <div class="card-header">
+                <h2 class="card-title">Time Comparison</h2>
+                <p class="card-subtitle">Monthly processing hours before and after</p>
+              </div>
+            </ng-template>
+
+            <div class="chart-container">
+              <p-chart type="bar" [data]="chartData" [options]="chartOptions" height="300px"></p-chart>
+            </div>
+          </p-card>
+        </div>
+
+        <!-- Results Column -->
+        <div class="results-column">
+          <p-card styleClass="results-card">
+            <ng-template pTemplate="header">
+              <div class="results-header">
+                <i class="pi pi-trophy header-icon"></i>
+                <h2 class="results-title">Your Annual Savings</h2>
+              </div>
+            </ng-template>
+
+            <div class="results-content">
+              <div class="primary-result">
+                <div class="savings-amount">
+                  {{ formatCurrency(displayedSavings) }}
+                </div>
+                <p class="savings-label">per year in labor costs</p>
+              </div>
+
+              <p-divider></p-divider>
+
+              <div class="metrics-grid">
+                <div class="metric-card">
+                  <div class="metric-icon">
+                    <i class="pi pi-calendar"></i>
+                  </div>
+                  <div class="metric-content">
+                    <div class="metric-value">{{ formatCurrency(roiResult.monthlySavings) }}</div>
+                    <div class="metric-label">Monthly Savings</div>
+                  </div>
+                </div>
+
+                <div class="metric-card">
+                  <div class="metric-icon">
+                    <i class="pi pi-clock"></i>
+                  </div>
+                  <div class="metric-content">
+                    <div class="metric-value">{{ formatNumber(roiResult.hoursRecovered) }}</div>
+                    <div class="metric-label">Hours Recovered/Month</div>
+                  </div>
+                </div>
+
+                <div class="metric-card cost-before">
+                  <div class="metric-icon">
+                    <i class="pi pi-times-circle"></i>
+                  </div>
+                  <div class="metric-content">
+                    <div class="metric-value">{{ formatCurrency(roiResult.currentCost) }}</div>
+                    <div class="metric-label">Current Monthly Cost</div>
+                  </div>
+                </div>
+
+                <div class="metric-card cost-after">
+                  <div class="metric-icon">
+                    <i class="pi pi-check-circle"></i>
+                  </div>
+                  <div class="metric-content">
+                    <div class="metric-value">{{ formatCurrency(roiResult.newCost) }}</div>
+                    <div class="metric-label">Cost with DocSynk</div>
+                  </div>
+                </div>
+              </div>
+
+              <p-divider></p-divider>
+
+              <div class="cta-section">
+                <p class="cta-text">
+                  Want a detailed analysis customized for your operation?
+                </p>
+                <p-button
+                  label="Schedule Demo to See Full Analysis"
+                  icon="pi pi-calendar-plus"
+                  routerLink="/demo-request"
+                  styleClass="w-full demo-button"
+                  [raised]="true">
+                </p-button>
+                <small class="cta-note">
+                  <i class="pi pi-info-circle"></i>
+                  Our team will show you additional savings from compliance automation and error reduction
+                </small>
+              </div>
+            </div>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
