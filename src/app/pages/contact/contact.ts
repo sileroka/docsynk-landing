@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SHARED_IMPORTS } from '../../shared/primeng-imports';
 import { SeoService } from '../../services/seo.service';
 import { AnalyticsService } from '../../services/analytics.service';
+import { ContactService } from '../../services/contact.service';
 import { MessageService } from 'primeng/api';
+import { ContactFormData } from '../../models/contact.model';
 
 interface ContactMethod {
   title: string;
@@ -60,6 +62,7 @@ export class Contact implements OnInit {
   constructor(
     private fb: FormBuilder,
     private messageService: MessageService,
+    private contactService: ContactService,
     private seoService: SeoService,
     private analyticsService: AnalyticsService
   ) {}
@@ -109,23 +112,36 @@ export class Contact implements OnInit {
     if (this.contactForm.valid && !this.isSubmitting) {
       this.isSubmitting = true;
 
-      const formData = this.contactForm.value;
+      const formData: ContactFormData = this.contactForm.value;
       
       // Track analytics
       this.analyticsService.trackFormSubmission('contact', true);
       this.analyticsService.trackEvent('contact_inquiry', 'engagement', formData.inquiryType);
 
-      // Simulate API call
-      setTimeout(() => {
-        this.isSubmitting = false;
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Message Sent!',
-          detail: 'Thank you for contacting us. We\'ll respond within 24 hours.',
-          life: 5000
-        });
-        this.contactForm.reset();
-      }, 1500);
+      // Submit to SendGrid via backend API
+      this.contactService.submitContactForm(formData).subscribe({
+        next: (response) => {
+          this.isSubmitting = false;
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Message Sent!',
+            detail: 'Thank you for contacting us. We\'ll respond within 24 hours.',
+            life: 5000
+          });
+          this.contactForm.reset();
+        },
+        error: (error) => {
+          this.isSubmitting = false;
+          this.analyticsService.trackFormSubmission('contact', false);
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Failed to send message. Please try again or email us directly at support@docsynk.cloud.',
+            life: 7000
+          });
+          console.error('Contact form submission error:', error);
+        }
+      });
     } else {
       // Mark all fields as touched to show validation errors
       Object.keys(this.contactForm.controls).forEach(key => {

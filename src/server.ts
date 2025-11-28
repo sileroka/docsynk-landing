@@ -6,23 +6,23 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
+import { handleContactSubmission } from './api/contact.handler';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
+// Parse JSON request bodies
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 /**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/{*splat}', (req, res) => {
- *   // Handle API request
- * });
- * ```
+ * API endpoints
  */
+
+// Contact form endpoint
+app.post('/api/contact', handleContactSubmission);
 
 /**
  * Serve static files from /browser
