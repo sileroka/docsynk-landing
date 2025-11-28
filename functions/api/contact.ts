@@ -34,9 +34,11 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
 
   try {
     const formData: ContactFormData = await request.json();
+    console.log('📧 Contact form submission received:', { name: formData.name, email: formData.email, inquiryType: formData.inquiryType });
 
     // Validate required fields
     if (!formData.name || !formData.email || !formData.subject || !formData.message || !formData.inquiryType) {
+      console.error('❌ Validation failed: Missing required fields');
       return new Response(
         JSON.stringify({
           success: false,
@@ -66,7 +68,7 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
 
     // Check if SendGrid is configured
     if (!env.SENDGRID_API_KEY) {
-      console.error('SENDGRID_API_KEY not configured');
+      console.error('❌ SENDGRID_API_KEY not configured in environment variables');
       return new Response(
         JSON.stringify({
           success: false,
@@ -78,6 +80,11 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
         }
       );
     }
+
+    console.log('📤 Sending email via SendGrid...', {
+      to: env.SENDGRID_TO_EMAIL || 'info@docsynk.cloud',
+      from: env.SENDGRID_FROM_EMAIL || 'noreply@docsynk.cloud'
+    });
 
     // Send email using SendGrid
     const emailResponse = await fetch('https://api.sendgrid.com/v3/mail/send', {
@@ -169,7 +176,11 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
 
     if (!emailResponse.ok) {
       const errorText = await emailResponse.text();
-      console.error('SendGrid API error:', emailResponse.status, errorText);
+      console.error('❌ SendGrid API error:', {
+        status: emailResponse.status,
+        statusText: emailResponse.statusText,
+        error: errorText
+      });
       throw new Error(`SendGrid error: ${emailResponse.status}`);
     }
 
@@ -192,7 +203,7 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
     );
 
   } catch (error) {
-    console.error('Error processing contact form:', error);
+    console.error('❌ Error processing contact form:', error);
     return new Response(
       JSON.stringify({
         success: false,
