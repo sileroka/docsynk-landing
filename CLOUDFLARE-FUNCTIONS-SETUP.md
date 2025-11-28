@@ -50,7 +50,7 @@ The production environment is already configured correctly:
 // src/environments/environment.prod.ts
 export const environment = {
   production: true,
-  apiUrl: "https://api.docsynk.com/api", // ← Update this to your actual domain
+  apiUrl: "https://app.docsynk.cloud/api", // ← Update this to your actual domain
   sendgrid: { enabled: true },
 };
 ```
