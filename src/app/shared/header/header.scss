@@ -90,6 +90,65 @@
   margin-left: auto;
 }
 
+.mobile-menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  
+  .mobile-menu-item {
+    .menu-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      color: var(--text-color);
+      
+      &:hover {
+        background: var(--surface-hover);
+      }
+      
+      &:active {
+        background: var(--surface-100);
+      }
+      
+      .menu-icon {
+        font-size: 1.125rem;
+        color: var(--primary-color);
+      }
+      
+      .menu-label {
+        flex: 1;
+        font-weight: 500;
+      }
+    }
+    
+    .parent-link {
+      font-weight: 600;
+    }
+    
+    .submenu {
+      margin-left: 1rem;
+      margin-top: 0.25rem;
+      
+      .submenu-link {
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+        
+        .menu-icon {
+          font-size: 1rem;
+        }
+        
+        .menu-label {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
 ::ng-deep {
   .p-drawer {
     .p-drawer-content {

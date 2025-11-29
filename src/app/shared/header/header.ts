@@ -13,6 +13,7 @@ export class Header implements OnInit {
   menuItems: MenuItem[] = [];
   isScrolled = false;
   isMobileMenuVisible = false;
+  openSubmenus: Set<string> = new Set();
 
   constructor(private router: Router) {}
 
@@ -126,5 +127,23 @@ export class Header implements OnInit {
 
   toggleMobileMenu() {
     this.isMobileMenuVisible = !this.isMobileMenuVisible;
+  }
+
+  toggleSubmenu(label: string) {
+    if (this.openSubmenus.has(label)) {
+      this.openSubmenus.delete(label);
+    } else {
+      this.openSubmenus.add(label);
+    }
+  }
+
+  isSubmenuOpen(label: string): boolean {
+    return this.openSubmenus.has(label);
+  }
+
+  handleMenuClick(item: MenuItem) {
+    if (item.command) {
+      item.command({});
+    }
   }
 }
