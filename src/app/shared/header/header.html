@@ -57,13 +57,13 @@
           </div>
           
           <!-- Items with children (Resources) -->
-          <div *ngIf="item.items" class="menu-parent">
-            <div class="menu-link parent-link" (click)="toggleSubmenu(item.label)">
+          <div *ngIf="item.items && item.label" class="menu-parent">
+            <div class="menu-link parent-link" (click)="toggleSubmenu(item.label!)">
               <i [class]="item.icon" class="menu-icon"></i>
               <span class="menu-label">{{ item.label }}</span>
-              <i [class]="isSubmenuOpen(item.label) ? 'pi pi-chevron-down' : 'pi pi-chevron-right'" class="ml-auto"></i>
+              <i [class]="isSubmenuOpen(item.label!) ? 'pi pi-chevron-down' : 'pi pi-chevron-right'" class="ml-auto"></i>
             </div>
-            <div *ngIf="isSubmenuOpen(item.label)" class="submenu">
+            <div *ngIf="isSubmenuOpen(item.label!)" class="submenu">
               <div *ngFor="let subItem of item.items" class="menu-link submenu-link" (click)="handleMenuClick(subItem)">
                 <i [class]="subItem.icon" class="menu-icon"></i>
                 <span class="menu-label">{{ subItem.label }}</span>
