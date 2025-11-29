@@ -95,11 +95,11 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
       },
       body: JSON.stringify({
         personalizations: [{
-          to: [{ email: env.SENDGRID_TO_EMAIL || 'info@docsynk.cloud' }],
+          to: [{ email: env.SENDGRID_TO_EMAIL || 'info@synkadia.com' }],
           subject: `New Contact: ${formData.inquiryType} - ${formData.subject}`
         }],
         from: {
-          email: env.SENDGRID_FROM_EMAIL || 'noreply@docsynk.cloud',
+          email: env.SENDGRID_FROM_EMAIL || 'noreply@synkadia.com',
           name: 'DocSynk Contact Form'
         },
         reply_to: {
