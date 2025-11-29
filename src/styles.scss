@@ -57,11 +57,20 @@ $docsynk-white: #ffffff;
   --border-color: #dee2e6;
 
   // Status Colors
+  --green-200: #bbf7d0;
   --green-500: #22c55e;
+  --blue-200: #bfdbfe;
   --blue-500: #{$docsynk-blue};
+  --orange-200: #fed7aa;
   --orange-500: #f97316;
+  --red-200: #fecaca;
   --red-500: #ef4444;
+  --cyan-200: #a5f3fc;
   --cyan-500: #{$docsynk-teal};
+  --purple-200: #e9d5ff;
+  --purple-500: #a855f7;
+  --yellow-200: #fef08a;
+  --yellow-500: #eab308;
   
   // Shadows
   --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);

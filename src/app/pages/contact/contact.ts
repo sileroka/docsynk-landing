@@ -36,15 +36,9 @@ export class Contact implements OnInit {
   contactMethods: ContactMethod[] = [
     {
       title: 'Email',
-      value: 'support@docsynk.cloud',
+      value: 'info@synkadia.com',
       icon: 'pi-envelope',
-      link: 'mailto:support@docsynk.cloud'
-    },
-    {
-      title: 'Phone',
-      value: '+1 (555) 123-4567',
-      icon: 'pi-phone',
-      link: 'tel:+15551234567'
+      link: 'mailto:info@synkadia.com'
     },
     {
       title: 'Live Chat',
@@ -54,7 +48,7 @@ export class Contact implements OnInit {
     },
     {
       title: 'Office Hours',
-      value: 'Mon-Fri, 9am-6pm EST',
+      value: 'Mon-Fri, 9am-6pm PST',
       icon: 'pi-clock'
     }
   ];

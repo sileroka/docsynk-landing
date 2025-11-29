@@ -33,7 +33,7 @@ export class CustomerProof implements OnInit {
       quote: "DocSynk has transformed our international shipping operations. What used to take our team hours now happens in minutes. The compliance automation alone has saved us from countless costly delays.",
       author: "Sarah Chen",
       title: "VP of Operations",
-      company: "Global Freight Solutions",
+      company: "GFS",
       avatar: "SC",
       rating: 5
     },
@@ -41,7 +41,7 @@ export class CustomerProof implements OnInit {
       quote: "We ship to 47 countries and the documentation requirements were overwhelming. DocSynk's AI validation catches issues before they become problems. Our customs clearance rate improved from 76% to 98%.",
       author: "Michael Rodriguez",
       title: "Director of Logistics",
-      company: "TransOceanic Shipping",
+      company: "TOS",
       avatar: "MR",
       rating: 5
     },
@@ -49,7 +49,7 @@ export class CustomerProof implements OnInit {
       quote: "The ROI was immediate. In the first month, we eliminated $23,000 in demurrage fees alone. The team collaboration features mean our brokers and carriers are always working from the same documents.",
       author: "Jennifer Wu",
       title: "Supply Chain Manager",
-      company: "Pacific Trade Partners",
+      company: "PTP",
       avatar: "JW",
       rating: 5
     },
@@ -57,7 +57,7 @@ export class CustomerProof implements OnInit {
       quote: "As a customs broker, I work with hundreds of importers. Those using DocSynk are consistently the easiest to work with. Their documentation is always complete, accurate, and available exactly when needed.",
       author: "David Thompson",
       title: "Licensed Customs Broker",
-      company: "Thompson Trade Services",
+      company: "TTS",
       avatar: "DT",
       rating: 5
     },
@@ -65,7 +65,7 @@ export class CustomerProof implements OnInit {
       quote: "We were skeptical about the '90% time savings' claim, but it's real. Our documentation team went from 5 people to 2, and those 2 handle more volume than the 5 did before. This is a game-changer.",
       author: "Lisa Park",
       title: "CFO",
-      company: "Korea-US Logistics Corp",
+      company: "KLC",
       avatar: "LP",
       rating: 5
     }
@@ -88,7 +88,7 @@ export class CustomerProof implements OnInit {
       value: "99.9%",
       label: "System Uptime",
       icon: "pi-shield",
-      color: "blue"
+      color: "cyan"
     },
     {
       value: "47",

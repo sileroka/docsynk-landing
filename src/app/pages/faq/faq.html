@@ -23,7 +23,10 @@
           expandIcon="pi pi-plus"
           collapseIcon="pi pi-minus"
         >
-          <p-accordionpanel *ngFor="let faq of getFaqsByCategory(category)">
+          <p-accordionpanel
+            *ngFor="let faq of getFaqsByCategory(category); let i = index"
+            [value]="i"
+          >
             <p-accordionheader>{{ faq.question }}</p-accordionheader>
             <p-accordioncontent>
               <p class="faq-answer text-sm md:text-base">{{ faq.answer }}</p>
@@ -60,7 +63,7 @@
           icon="pi pi-calendar"
           severity="secondary"
           size="large"
-          [outlined]="true"
+          [raised]="true"
           routerLink="/demo-request"
           class="w-full sm:w-auto"
         />

@@ -4,7 +4,8 @@
     <div class="header-content">
       <h1 class="page-title">See DocSynk in Action</h1>
       <p class="page-subtitle">
-        Schedule a personalized demo and discover how DocSynk can transform your international shipping operations.
+        Schedule a personalized demo and discover how DocSynk can transform your
+        shipping operations.
       </p>
     </div>
   </div>
@@ -17,7 +18,8 @@
         <div class="benefits-column">
           <h2 class="benefits-title">What You'll Learn</h2>
           <p class="benefits-intro">
-            In your 30-minute personalized demo, our logistics experts will show you:
+            In your 30-minute personalized demo, our logistics experts will show
+            you:
           </p>
 
           <div class="benefits-list">
@@ -54,11 +56,12 @@
             <form [formGroup]="demoForm" (ngSubmit)="onSubmit()">
               <div class="form-content">
                 <!-- Success Message -->
-                <p-message 
-                  *ngIf="showSuccessMessage" 
-                  severity="success" 
+                <p-message
+                  *ngIf="showSuccessMessage"
+                  severity="success"
                   text="Thank you! We'll contact you within 24 hours to schedule your demo."
-                  styleClass="w-full mb-4">
+                  styleClass="w-full mb-4"
+                >
                 </p-message>
 
                 <!-- Name Row -->
@@ -67,18 +70,16 @@
                     <label for="firstName" class="field-label">
                       First Name <span class="required">*</span>
                     </label>
-                    <input 
-                      pInputText 
-                      id="firstName" 
+                    <input
+                      pInputText
+                      id="firstName"
                       formControlName="firstName"
                       placeholder="John"
                       [class.ng-invalid]="isFieldInvalid('firstName')"
                       [class.ng-dirty]="isFieldInvalid('firstName')"
                     />
-                    <small 
-                      *ngIf="isFieldInvalid('firstName')" 
-                      class="p-error">
-                      {{ getErrorMessage('firstName') }}
+                    <small *ngIf="isFieldInvalid('firstName')" class="p-error">
+                      {{ getErrorMessage("firstName") }}
                     </small>
                   </div>
 
@@ -86,18 +87,16 @@
                     <label for="lastName" class="field-label">
                       Last Name <span class="required">*</span>
                     </label>
-                    <input 
-                      pInputText 
-                      id="lastName" 
+                    <input
+                      pInputText
+                      id="lastName"
                       formControlName="lastName"
                       placeholder="Doe"
                       [class.ng-invalid]="isFieldInvalid('lastName')"
                       [class.ng-dirty]="isFieldInvalid('lastName')"
                     />
-                    <small 
-                      *ngIf="isFieldInvalid('lastName')" 
-                      class="p-error">
-                      {{ getErrorMessage('lastName') }}
+                    <small *ngIf="isFieldInvalid('lastName')" class="p-error">
+                      {{ getErrorMessage("lastName") }}
                     </small>
                   </div>
                 </div>
@@ -111,9 +110,9 @@
                     <p-inputgroup-addon>
                       <i class="pi pi-envelope"></i>
                     </p-inputgroup-addon>
-                    <input 
-                      pInputText 
-                      id="email" 
+                    <input
+                      pInputText
+                      id="email"
                       formControlName="email"
                       type="email"
                       placeholder="john.doe@company.com"
@@ -121,10 +120,8 @@
                       [class.ng-dirty]="isFieldInvalid('email')"
                     />
                   </p-inputgroup>
-                  <small 
-                    *ngIf="isFieldInvalid('email')" 
-                    class="p-error">
-                    {{ getErrorMessage('email') }}
+                  <small *ngIf="isFieldInvalid('email')" class="p-error">
+                    {{ getErrorMessage("email") }}
                   </small>
                 </div>
 
@@ -133,18 +130,16 @@
                   <label for="companyName" class="field-label">
                     Company Name <span class="required">*</span>
                   </label>
-                  <input 
-                    pInputText 
-                    id="companyName" 
+                  <input
+                    pInputText
+                    id="companyName"
                     formControlName="companyName"
                     placeholder="Acme Logistics Inc."
                     [class.ng-invalid]="isFieldInvalid('companyName')"
                     [class.ng-dirty]="isFieldInvalid('companyName')"
                   />
-                  <small 
-                    *ngIf="isFieldInvalid('companyName')" 
-                    class="p-error">
-                    {{ getErrorMessage('companyName') }}
+                  <small *ngIf="isFieldInvalid('companyName')" class="p-error">
+                    {{ getErrorMessage("companyName") }}
                   </small>
                 </div>
 
@@ -162,12 +157,11 @@
                     placeholder="Select volume range"
                     styleClass="w-full"
                     [class.ng-invalid]="isFieldInvalid('companySize')"
-                    [class.ng-dirty]="isFieldInvalid('companySize')">
+                    [class.ng-dirty]="isFieldInvalid('companySize')"
+                  >
                   </p-select>
-                  <small 
-                    *ngIf="isFieldInvalid('companySize')" 
-                    class="p-error">
-                    {{ getErrorMessage('companySize') }}
+                  <small *ngIf="isFieldInvalid('companySize')" class="p-error">
+                    {{ getErrorMessage("companySize") }}
                   </small>
                 </div>
 
@@ -186,29 +180,35 @@
                     display="chip"
                     styleClass="w-full"
                     [class.ng-invalid]="isFieldInvalid('shippingRegions')"
-                    [class.ng-dirty]="isFieldInvalid('shippingRegions')">
+                    [class.ng-dirty]="isFieldInvalid('shippingRegions')"
+                  >
                   </p-multiselect>
-                  <small 
-                    *ngIf="isFieldInvalid('shippingRegions')" 
-                    class="p-error">
-                    {{ getErrorMessage('shippingRegions') }}
+                  <small
+                    *ngIf="isFieldInvalid('shippingRegions')"
+                    class="p-error"
+                  >
+                    {{ getErrorMessage("shippingRegions") }}
                   </small>
                 </div>
 
                 <!-- Current Tools -->
                 <div class="form-field">
-                  <label class="field-label">
-                    Current Tools (Optional)
-                  </label>
+                  <label class="field-label"> Current Tools (Optional) </label>
                   <div class="checkbox-group">
-                    <div class="checkbox-item" *ngFor="let tool of currentTools">
+                    <div
+                      class="checkbox-item"
+                      *ngFor="let tool of currentTools"
+                    >
                       <p-checkbox
                         [value]="tool.value"
                         formControlName="currentTools"
                         [inputId]="tool.value"
-                        [binary]="false">
+                        [binary]="false"
+                      >
                       </p-checkbox>
-                      <label [for]="tool.value" class="checkbox-label">{{ tool.label }}</label>
+                      <label [for]="tool.value" class="checkbox-label">{{
+                        tool.label
+                      }}</label>
                     </div>
                   </div>
                 </div>
@@ -216,38 +216,40 @@
                 <!-- Challenge -->
                 <div class="form-field">
                   <label for="challenge" class="field-label">
-                    Biggest Documentation Challenge <span class="required">*</span>
+                    Biggest Documentation Challenge
+                    <span class="required">*</span>
                   </label>
-                  <textarea 
-                    pTextarea 
-                    id="challenge" 
+                  <textarea
+                    pTextarea
+                    id="challenge"
                     formControlName="challenge"
                     rows="4"
                     placeholder="Tell us about your current documentation pain points..."
                     [class.ng-invalid]="isFieldInvalid('challenge')"
                     [class.ng-dirty]="isFieldInvalid('challenge')"
-                    class="w-full">
+                    class="w-full"
+                  >
                   </textarea>
-                  <small 
-                    *ngIf="isFieldInvalid('challenge')" 
-                    class="p-error">
-                    {{ getErrorMessage('challenge') }}
+                  <small *ngIf="isFieldInvalid('challenge')" class="p-error">
+                    {{ getErrorMessage("challenge") }}
                   </small>
                 </div>
 
                 <!-- Submit Button -->
                 <div class="form-actions">
-                  <p-button 
-                    type="submit" 
-                    label="Request Demo" 
+                  <p-button
+                    type="submit"
+                    label="Request Demo"
                     icon="pi pi-calendar"
                     [loading]="isSubmitting"
                     [disabled]="isSubmitting"
-                    styleClass="w-full submit-button">
+                    styleClass="w-full submit-button"
+                  >
                   </p-button>
                   <p class="privacy-note">
                     <i class="pi pi-lock"></i>
-                    We respect your privacy. Your information will never be shared.
+                    We respect your privacy. Your information will never be
+                    shared.
                   </p>
                 </div>
               </div>

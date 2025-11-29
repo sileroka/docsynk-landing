@@ -49,14 +49,14 @@ export class Pricing implements OnInit {
     },
     {
       name: 'Professional',
-      price: 899,
+      price: 599,
       shipments: 'Up to 2,500 shipments/month',
       features: [
         'Everything in Starter, plus:',
         'Multi-jurisdiction compliance',
         'Priority support (4-hour response)',
         'Advanced OCR (99.5% accuracy)',
-        'Unlimited user accounts',
+        '20 user accounts',
         'Custom workflows',
         'Integration with SAP/Oracle',
         'Dedicated account manager'
@@ -70,6 +70,7 @@ export class Pricing implements OnInit {
       shipments: 'Unlimited shipments',
       features: [
         'Everything in Professional, plus:',
+        'Unlimited user accounts',
         'Custom compliance rules',
         '24/7 phone support',
         'On-premise deployment option',

@@ -61,9 +61,14 @@
 
   .features-grid {
     gap: 2rem;
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 2fr));
   }
 
   .feature-card {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     transition: all 0.3s ease;
     border: 1px solid var(--surface-border);
@@ -73,18 +78,34 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     }
 
+    ::ng-deep .p-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
     ::ng-deep .p-card-body {
       padding: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     ::ng-deep .p-card-content {
       padding-top: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .card-header {
       padding: 2rem 2rem 1.5rem;
       text-align: center;
       border-bottom: 1px solid var(--surface-border);
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
 
       i {
         margin-bottom: 1rem;
@@ -95,6 +116,7 @@
         font-weight: 700;
         color: var(--text-color);
         margin-bottom: 0.75rem;
+        min-height: 2.5rem;
       }
 
       .feature-description {
@@ -107,6 +129,7 @@
       list-style: none;
       padding: 2rem;
       margin: 0;
+      flex: 1;
 
       .benefit-item {
         display: flex;

@@ -24,7 +24,7 @@ export class DemoRequestService {
    */
   submitDemoRequest(request: DemoRequest): Observable<DemoRequestResponse> {
     return this.http.post<ApiResponse<DemoRequestResponse>>(
-      `${this.apiUrl}/demo-requests`,
+      `${this.apiUrl}/demo-request`,
       request
     ).pipe(
       timeout(this.apiTimeout),

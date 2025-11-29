@@ -53,11 +53,6 @@ export class Header implements OnInit {
             command: () => this.router.navigate(['/faq'])
           },
           {
-            label: 'Blog',
-            icon: 'pi pi-pencil',
-            command: () => window.open('https://blog.docsynk.cloud', '_blank')
-          },
-          {
             label: 'Documentation',
             icon: 'pi pi-file',
             command: () => window.open('https://docs.docsynk.cloud', '_blank')

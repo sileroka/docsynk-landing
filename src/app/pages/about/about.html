@@ -2,9 +2,12 @@
   <!-- Hero Section -->
   <section class="about-hero">
     <div class="hero-content">
-      <h1 class="page-title text-4xl md:text-6xl">Transforming International Trade Through Innovation</h1>
+      <h1 class="page-title text-4xl md:text-6xl">
+        Transforming Trade Through Innovation
+      </h1>
       <p class="page-subtitle text-lg md:text-xl">
-        We're on a mission to eliminate the friction in global logistics, one document at a time.
+        We're on a mission to eliminate the friction in global logistics, one
+        document at a time.
       </p>
     </div>
   </section>
@@ -16,17 +19,21 @@
         <h2 class="section-title text-3xl md:text-4xl">Our Story</h2>
         <div class="story-text">
           <p>
-            DocSynk was born from frustration. Our founders spent years in freight forwarding and customs brokerage, 
-            watching teams waste hours on paperwork that should take minutes. In 2023, we decided enough was enough.
+            DocSynk was born from frustration. Our founders spent years in
+            freight forwarding and customs brokerage, watching teams waste hours
+            on paperwork that should take minutes. In 2023, we decided enough
+            was enough.
           </p>
           <p>
-            We assembled a team of logistics veterans and AI engineers with one goal: make international shipping 
-            documentation as easy as sending an email. Today, we process over 100,000 documents monthly for companies 
+            We assembled a team of logistics veterans and AI engineers with one
+            goal: make shipping documentation as easy as sending an email.
+            Today, we process over 100,000 documents monthly for companies
             across six continents.
           </p>
           <p>
-            But we're just getting started. Every day, we're building new features, expanding to new countries, and 
-            helping more companies focus on growing their business instead of fighting paperwork.
+            But we're just getting started. Every day, we're building new
+            features, expanding to new countries, and helping more companies
+            focus on growing their business instead of fighting paperwork.
           </p>
         </div>
       </div>
@@ -52,8 +59,9 @@
         <i class="pi pi-flag text-6xl text-primary mb-4"></i>
         <h2 class="section-title text-3xl md:text-4xl">Our Mission</h2>
         <p class="mission-text text-lg md:text-xl">
-          To make international trade accessible, efficient, and compliant for businesses of all sizes. 
-          We believe that technology should eliminate barriers, not create them.
+          To make trade accessible, efficient, and compliant for businesses of
+          all sizes. We believe that technology should eliminate barriers, not
+          create them.
         </p>
       </div>
     </div>
@@ -62,13 +70,19 @@
   <!-- Values Section -->
   <section class="values-section">
     <div class="section-container">
-      <h2 class="section-title text-3xl md:text-4xl text-center mb-5">Our Values</h2>
-      <div class="values-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <h2 class="section-title text-3xl md:text-4xl text-center mb-5">
+        Our Values
+      </h2>
+      <div
+        class="values-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+      >
         <p-card *ngFor="let value of values" class="value-card">
           <div class="value-content">
             <i class="pi {{ value.icon }} text-5xl text-primary mb-3"></i>
             <h3 class="value-title text-xl md:text-2xl">{{ value.title }}</h3>
-            <p class="value-description text-sm md:text-base">{{ value.description }}</p>
+            <p class="value-description text-sm md:text-base">
+              {{ value.description }}
+            </p>
           </div>
         </p-card>
       </div>
@@ -78,13 +92,17 @@
   <!-- CTA Section -->
   <section class="about-cta">
     <div class="cta-content">
-      <h2 class="cta-title text-3xl md:text-4xl">Ready to Join 200+ Companies?</h2>
+      <h2 class="cta-title text-3xl md:text-4xl">
+        Ready to Join 200+ Companies?
+      </h2>
       <p class="cta-subtitle text-base md:text-lg">
         See how DocSynk can transform your shipping documentation workflow
       </p>
-      <div class="cta-buttons flex flex-column sm:flex-row gap-3 justify-content-center">
-        <p-button 
-          label="Start Free Trial" 
+      <div
+        class="cta-buttons flex flex-column sm:flex-row gap-3 justify-content-center"
+      >
+        <p-button
+          label="Start Free Trial"
           icon="pi pi-arrow-right"
           iconPos="right"
           severity="success"
@@ -93,12 +111,12 @@
           routerLink="/demo-request"
           class="w-full sm:w-auto"
         />
-        <p-button 
-          label="Contact Us" 
+        <p-button
+          label="Contact Us"
           icon="pi pi-envelope"
           severity="secondary"
           size="large"
-          [outlined]="true"
+          [raised]="true"
           routerLink="/contact"
           class="w-full sm:w-auto"
         />

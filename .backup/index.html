@@ -1,1328 +1,1465 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DocSynk - Document management system for international logistics. Handle bills of lading, customs forms, shipping manifests with multi-jurisdiction compliance.">
-    <title>DocSynk - Document Management for International Logistics</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="DocSynk - Document management system for logistics. Handle bills of lading, customs forms, shipping manifests with multi-jurisdiction compliance."
+    />
+    <title>DocSynk - Document Management for Logistics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
-            --primary-color: #0066FF;
-            --primary-dark: #0052CC;
-            --secondary-color: #00C853;
-            --text-dark: #1A1A2E;
-            --text-light: #6B7280;
-            --bg-light: #F8FAFC;
-            --white: #FFFFFF;
-            --border-color: #E5E7EB;
-            --gradient-start: #0066FF;
-            --gradient-end: #00C853;
-        }
+      :root {
+        --primary-color: #0066ff;
+        --primary-dark: #0052cc;
+        --secondary-color: #00c853;
+        --text-dark: #1a1a2e;
+        --text-light: #6b7280;
+        --bg-light: #f8fafc;
+        --white: #ffffff;
+        --border-color: #e5e7eb;
+        --gradient-start: #0066ff;
+        --gradient-end: #00c853;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        color: var(--text-dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
 
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-        }
+      /* Navigation */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        border-bottom: 1px solid var(--border-color);
+      }
 
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+      .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--primary-color);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+      .logo {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--primary-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
 
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-        }
+      .logo-icon {
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(
+          135deg,
+          var(--gradient-start),
+          var(--gradient-end)
+        );
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+      }
 
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        list-style: none;
+      }
 
-        .nav-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            transition: color 0.2s;
-        }
+      .nav-links a {
+        color: var(--text-dark);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 15px;
+        transition: color 0.2s;
+      }
 
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
 
-        .nav-cta {
-            display: flex;
-            gap: 12px;
-        }
+      .nav-cta {
+        display: flex;
+        gap: 12px;
+      }
 
-        .btn {
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 15px;
-            text-decoration: none;
-            transition: all 0.2s;
-            cursor: pointer;
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
+      .btn {
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 15px;
+        text-decoration: none;
+        transition: all 0.2s;
+        cursor: pointer;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
 
-        .btn-primary {
-            background: var(--primary-color);
-            color: var(--white);
-        }
+      .btn-primary {
+        background: var(--primary-color);
+        color: var(--white);
+      }
 
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-        }
+      .btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+      }
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-dark);
-            border: 1px solid var(--border-color);
-        }
+      .btn-secondary {
+        background: transparent;
+        color: var(--text-dark);
+        border: 1px solid var(--border-color);
+      }
 
-        .btn-secondary:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-        }
+      .btn-secondary:hover {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+      }
 
-        .btn-large {
-            padding: 16px 32px;
-            font-size: 16px;
-        }
+      .btn-large {
+        padding: 16px 32px;
+        font-size: 16px;
+      }
 
-        .btn-spacing {
-            margin-left: 12px;
-        }
+      .btn-spacing {
+        margin-left: 12px;
+      }
 
-        /* Hero Section */
-        .hero {
-            padding: 160px 0 100px;
-            background: linear-gradient(180deg, var(--bg-light) 0%, var(--white) 100%);
-            position: relative;
-            overflow: hidden;
-        }
+      /* Hero Section */
+      .hero {
+        padding: 160px 0 100px;
+        background: linear-gradient(
+          180deg,
+          var(--bg-light) 0%,
+          var(--white) 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 60%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
-            z-index: 0;
-        }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 60%;
+        height: 100%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 102, 255, 0.08) 0%,
+          transparent 70%
+        );
+        z-index: 0;
+      }
 
-        .hero .container {
-            position: relative;
-            z-index: 1;
-        }
+      .hero .container {
+        position: relative;
+        z-index: 1;
+      }
 
+      .hero-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .hero-text h1 {
+        font-size: 52px;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        color: var(--text-dark);
+      }
+
+      .hero-text h1 span {
+        background: linear-gradient(
+          135deg,
+          var(--gradient-start),
+          var(--gradient-end)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-subtitle {
+        font-size: 20px;
+        color: var(--text-light);
+        margin-bottom: 32px;
+        max-width: 500px;
+      }
+
+      .hero-stats {
+        display: flex;
+        gap: 40px;
+        margin-top: 48px;
+        padding-top: 32px;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .stat {
+        text-align: left;
+      }
+
+      .stat-value {
+        font-size: 36px;
+        font-weight: 800;
+        color: var(--primary-color);
+      }
+
+      .stat-label {
+        font-size: 14px;
+        color: var(--text-light);
+        margin-top: 4px;
+      }
+
+      .hero-visual {
+        position: relative;
+      }
+
+      .hero-image {
+        background: var(--white);
+        border-radius: 16px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        padding: 24px;
+        border: 1px solid var(--border-color);
+      }
+
+      .dashboard-preview {
+        background: var(--bg-light);
+        border-radius: 12px;
+        padding: 20px;
+        min-height: 400px;
+      }
+
+      .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .dashboard-title {
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      .status-badge {
+        background: var(--secondary-color);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .doc-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .doc-item {
+        background: var(--white);
+        padding: 16px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border: 1px solid var(--border-color);
+      }
+
+      .doc-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(
+          135deg,
+          var(--gradient-start),
+          var(--gradient-end)
+        );
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+      }
+
+      .doc-info h4 {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+
+      .doc-info p {
+        font-size: 12px;
+        color: var(--text-light);
+      }
+
+      .doc-status {
+        margin-left: auto;
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-weight: 500;
+      }
+
+      .doc-status.verified {
+        background: rgba(0, 200, 83, 0.1);
+        color: var(--secondary-color);
+      }
+
+      .doc-status.pending {
+        background: rgba(255, 193, 7, 0.1);
+        color: #f59e0b;
+      }
+
+      .doc-status.processing {
+        background: rgba(0, 102, 255, 0.1);
+        color: var(--primary-color);
+      }
+
+      /* Features Section */
+      .features {
+        padding: 100px 0;
+        background: var(--white);
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 60px;
+      }
+
+      .section-label {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--primary-color);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+      }
+
+      .section-title {
+        font-size: 40px;
+        font-weight: 800;
+        margin-bottom: 20px;
+        color: var(--text-dark);
+      }
+
+      .section-description {
+        font-size: 18px;
+        color: var(--text-light);
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
+
+      .feature-card {
+        padding: 32px;
+        border-radius: 16px;
+        background: var(--bg-light);
+        border: 1px solid var(--border-color);
+        transition: all 0.3s;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      }
+
+      .feature-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(
+          135deg,
+          var(--gradient-start),
+          var(--gradient-end)
+        );
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+      }
+
+      .feature-card h3 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      .feature-card p {
+        color: var(--text-light);
+        font-size: 15px;
+      }
+
+      /* Documents Section */
+      .documents {
+        padding: 100px 0;
+        background: var(--bg-light);
+      }
+
+      .documents-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .documents-visual {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .doc-type-card {
+        background: var(--white);
+        padding: 24px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        text-align: center;
+        transition: all 0.3s;
+      }
+
+      .doc-type-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .doc-type-icon {
+        width: 64px;
+        height: 64px;
+        background: var(--bg-light);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+        font-size: 28px;
+      }
+
+      .doc-type-card h4 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .doc-type-card p {
+        font-size: 13px;
+        color: var(--text-light);
+      }
+
+      .documents-text .section-label,
+      .documents-text .section-title,
+      .documents-text .section-description {
+        text-align: left;
+      }
+
+      .doc-features-list {
+        margin-top: 32px;
+        list-style: none;
+      }
+
+      .doc-features-list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 15px;
+      }
+
+      .doc-features-list li:last-child {
+        border-bottom: none;
+      }
+
+      .check-icon {
+        width: 24px;
+        height: 24px;
+        background: rgba(0, 200, 83, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--secondary-color);
+        font-size: 14px;
+      }
+
+      /* Compliance Section */
+      .compliance {
+        padding: 100px 0;
+        background: var(--text-dark);
+        color: var(--white);
+      }
+
+      .compliance .section-label {
+        color: var(--secondary-color);
+      }
+
+      .compliance .section-title {
+        color: var(--white);
+      }
+
+      .compliance .section-description {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .compliance-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        margin-top: 60px;
+      }
+
+      .compliance-card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 32px 24px;
+        border-radius: 12px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s;
+      }
+
+      .compliance-card:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-4px);
+      }
+
+      .compliance-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(
+          135deg,
+          var(--gradient-start),
+          var(--gradient-end)
+        );
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+        font-size: 22px;
+      }
+
+      .compliance-card h4 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .compliance-card p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Savings Section */
+      .savings {
+        padding: 100px 0;
+        background: linear-gradient(
+          135deg,
+          var(--gradient-start),
+          var(--gradient-end)
+        );
+        color: var(--white);
+        text-align: center;
+      }
+
+      .savings-amount {
+        font-size: 80px;
+        font-weight: 800;
+        margin-bottom: 16px;
+      }
+
+      .savings-subtitle {
+        font-size: 24px;
+        margin-bottom: 24px;
+        opacity: 0.9;
+      }
+
+      .savings-description {
+        font-size: 18px;
+        opacity: 0.8;
+        max-width: 600px;
+        margin: 0 auto 40px;
+      }
+
+      .savings .btn-primary {
+        background: var(--white);
+        color: var(--primary-color);
+      }
+
+      .savings .btn-primary:hover {
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      /* Pricing Section */
+      .pricing {
+        padding: 100px 0;
+        background: var(--bg-light);
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .pricing-card {
+        background: var(--white);
+        padding: 40px 32px;
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+        text-align: center;
+        position: relative;
+        transition: all 0.3s;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      }
+
+      .pricing-card.featured {
+        border: 2px solid var(--primary-color);
+        transform: scale(1.05);
+      }
+
+      .pricing-card.featured:hover {
+        transform: scale(1.05) translateY(-4px);
+      }
+
+      .pricing-badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary-color);
+        color: var(--white);
+        padding: 4px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .pricing-name {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .pricing-description {
+        font-size: 14px;
+        color: var(--text-light);
+        margin-bottom: 24px;
+      }
+
+      .pricing-amount {
+        font-size: 48px;
+        font-weight: 800;
+        color: var(--text-dark);
+      }
+
+      .pricing-amount span {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--text-light);
+      }
+
+      .pricing-features {
+        list-style: none;
+        margin: 32px 0;
+        text-align: left;
+      }
+
+      .pricing-features li {
+        padding: 10px 0;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .pricing-features li::before {
+        content: "✓";
+        color: var(--secondary-color);
+        font-weight: 600;
+      }
+
+      .pricing-card .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* CTA Section */
+      .cta {
+        padding: 100px 0;
+        background: var(--white);
+        text-align: center;
+      }
+
+      .cta-content {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin-top: 32px;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 60px 0 30px;
+        background: var(--text-dark);
+        color: var(--white);
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 60px;
+        margin-bottom: 60px;
+      }
+
+      .footer-brand p {
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 16px;
+        font-size: 14px;
+        max-width: 300px;
+      }
+
+      .footer-column h4 {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 12px;
+      }
+
+      .footer-column ul a {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.2s;
+      }
+
+      .footer-column ul a:hover {
+        color: var(--white);
+      }
+
+      .footer-bottom {
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-bottom p {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 14px;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 16px;
+      }
+
+      .footer-social a {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+
+      .footer-social a:hover {
+        background: var(--primary-color);
+      }
+
+      /* Mobile Menu */
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 8px;
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
         .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+          grid-template-columns: 1fr;
+          text-align: center;
         }
 
         .hero-text h1 {
-            font-size: 52px;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            color: var(--text-dark);
-        }
-
-        .hero-text h1 span {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+          font-size: 42px;
         }
 
         .hero-subtitle {
-            font-size: 20px;
-            color: var(--text-light);
-            margin-bottom: 32px;
-            max-width: 500px;
+          margin: 0 auto 32px;
         }
 
         .hero-stats {
-            display: flex;
-            gap: 40px;
-            margin-top: 48px;
-            padding-top: 32px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .stat {
-            text-align: left;
-        }
-
-        .stat-value {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--primary-color);
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-top: 4px;
+          justify-content: center;
         }
 
         .hero-visual {
-            position: relative;
-        }
-
-        .hero-image {
-            background: var(--white);
-            border-radius: 16px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
-            padding: 24px;
-            border: 1px solid var(--border-color);
-        }
-
-        .dashboard-preview {
-            background: var(--bg-light);
-            border-radius: 12px;
-            padding: 20px;
-            min-height: 400px;
-        }
-
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .dashboard-title {
-            font-weight: 600;
-            font-size: 16px;
-        }
-
-        .status-badge {
-            background: var(--secondary-color);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .doc-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .doc-item {
-            background: var(--white);
-            padding: 16px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border: 1px solid var(--border-color);
-        }
-
-        .doc-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-        }
-
-        .doc-info h4 {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .doc-info p {
-            font-size: 12px;
-            color: var(--text-light);
-        }
-
-        .doc-status {
-            margin-left: auto;
-            font-size: 12px;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-weight: 500;
-        }
-
-        .doc-status.verified {
-            background: rgba(0, 200, 83, 0.1);
-            color: var(--secondary-color);
-        }
-
-        .doc-status.pending {
-            background: rgba(255, 193, 7, 0.1);
-            color: #F59E0B;
-        }
-
-        .doc-status.processing {
-            background: rgba(0, 102, 255, 0.1);
-            color: var(--primary-color);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 100px 0;
-            background: var(--white);
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 60px;
-        }
-
-        .section-label {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--primary-color);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-
-        .section-title {
-            font-size: 40px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: var(--text-dark);
-        }
-
-        .section-description {
-            font-size: 18px;
-            color: var(--text-light);
+          max-width: 600px;
+          margin: 0 auto;
         }
 
         .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .feature-card {
-            padding: 32px;
-            border-radius: 16px;
-            background: var(--bg-light);
-            border: 1px solid var(--border-color);
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        .feature-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-
-        .feature-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .feature-card p {
-            color: var(--text-light);
-            font-size: 15px;
-        }
-
-        /* Documents Section */
-        .documents {
-            padding: 100px 0;
-            background: var(--bg-light);
+          grid-template-columns: repeat(2, 1fr);
         }
 
         .documents-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
+          grid-template-columns: 1fr;
+          gap: 40px;
         }
 
-        .documents-visual {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .doc-type-card {
-            background: var(--white);
-            padding: 24px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .doc-type-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        .doc-type-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--bg-light);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-            font-size: 28px;
-        }
-
-        .doc-type-card h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .doc-type-card p {
-            font-size: 13px;
-            color: var(--text-light);
+        .documents-text {
+          order: -1;
         }
 
         .documents-text .section-label,
         .documents-text .section-title,
         .documents-text .section-description {
-            text-align: left;
-        }
-
-        .doc-features-list {
-            margin-top: 32px;
-            list-style: none;
-        }
-
-        .doc-features-list li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 15px;
-        }
-
-        .doc-features-list li:last-child {
-            border-bottom: none;
-        }
-
-        .check-icon {
-            width: 24px;
-            height: 24px;
-            background: rgba(0, 200, 83, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--secondary-color);
-            font-size: 14px;
-        }
-
-        /* Compliance Section */
-        .compliance {
-            padding: 100px 0;
-            background: var(--text-dark);
-            color: var(--white);
-        }
-
-        .compliance .section-label {
-            color: var(--secondary-color);
-        }
-
-        .compliance .section-title {
-            color: var(--white);
-        }
-
-        .compliance .section-description {
-            color: rgba(255, 255, 255, 0.7);
+          text-align: center;
         }
 
         .compliance-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            margin-top: 60px;
-        }
-
-        .compliance-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 32px 24px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
-        }
-
-        .compliance-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-4px);
-        }
-
-        .compliance-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-            font-size: 22px;
-        }
-
-        .compliance-card h4 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .compliance-card p {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* Savings Section */
-        .savings {
-            padding: 100px 0;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: var(--white);
-            text-align: center;
-        }
-
-        .savings-amount {
-            font-size: 80px;
-            font-weight: 800;
-            margin-bottom: 16px;
-        }
-
-        .savings-subtitle {
-            font-size: 24px;
-            margin-bottom: 24px;
-            opacity: 0.9;
-        }
-
-        .savings-description {
-            font-size: 18px;
-            opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        .savings .btn-primary {
-            background: var(--white);
-            color: var(--primary-color);
-        }
-
-        .savings .btn-primary:hover {
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        /* Pricing Section */
-        .pricing {
-            padding: 100px 0;
-            background: var(--bg-light);
+          grid-template-columns: repeat(2, 1fr);
         }
 
         .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            margin-top: 60px;
-        }
-
-        .pricing-card {
-            background: var(--white);
-            padding: 40px 32px;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            text-align: center;
-            position: relative;
-            transition: all 0.3s;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+          grid-template-columns: 1fr;
+          max-width: 400px;
+          margin: 60px auto 0;
         }
 
         .pricing-card.featured {
-            border: 2px solid var(--primary-color);
-            transform: scale(1.05);
+          transform: none;
         }
 
         .pricing-card.featured:hover {
-            transform: scale(1.05) translateY(-4px);
-        }
-
-        .pricing-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .pricing-name {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .pricing-description {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-bottom: 24px;
-        }
-
-        .pricing-amount {
-            font-size: 48px;
-            font-weight: 800;
-            color: var(--text-dark);
-        }
-
-        .pricing-amount span {
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--text-light);
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin: 32px 0;
-            text-align: left;
-        }
-
-        .pricing-features li {
-            padding: 10px 0;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .pricing-features li::before {
-            content: '✓';
-            color: var(--secondary-color);
-            font-weight: 600;
-        }
-
-        .pricing-card .btn {
-            width: 100%;
-            justify-content: center;
-        }
-
-        /* CTA Section */
-        .cta {
-            padding: 100px 0;
-            background: var(--white);
-            text-align: center;
-        }
-
-        .cta-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin-top: 32px;
-        }
-
-        /* Footer */
-        .footer {
-            padding: 60px 0 30px;
-            background: var(--text-dark);
-            color: var(--white);
+          transform: translateY(-4px);
         }
 
         .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 40px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links,
+        .nav-cta {
+          display: none;
+        }
+
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .hero {
+          padding: 120px 0 60px;
+        }
+
+        .hero-text h1 {
+          font-size: 32px;
+        }
+
+        .hero-subtitle {
+          font-size: 16px;
+        }
+
+        .hero-stats {
+          flex-direction: column;
+          gap: 24px;
+          align-items: center;
+        }
+
+        .stat {
+          text-align: center;
+        }
+
+        .section-title {
+          font-size: 28px;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .documents-visual {
+          grid-template-columns: 1fr;
+        }
+
+        .compliance-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .savings-amount {
+          font-size: 48px;
+        }
+
+        .savings-subtitle {
+          font-size: 18px;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          text-align: center;
         }
 
         .footer-brand p {
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 16px;
-            font-size: 14px;
-            max-width: 300px;
-        }
-
-        .footer-column h4 {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-column ul a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
-
-        .footer-column ul a:hover {
-            color: var(--white);
+          margin: 16px auto 0;
         }
 
         .footer-bottom {
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+          flex-direction: column;
+          gap: 20px;
         }
-
-        .footer-bottom p {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 14px;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 16px;
-        }
-
-        .footer-social a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .footer-social a:hover {
-            background: var(--primary-color);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text h1 {
-                font-size: 42px;
-            }
-
-            .hero-subtitle {
-                margin: 0 auto 32px;
-            }
-
-            .hero-stats {
-                justify-content: center;
-            }
-
-            .hero-visual {
-                max-width: 600px;
-                margin: 0 auto;
-            }
-
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .documents-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .documents-text {
-                order: -1;
-            }
-
-            .documents-text .section-label,
-            .documents-text .section-title,
-            .documents-text .section-description {
-                text-align: center;
-            }
-
-            .compliance-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-                margin: 60px auto 0;
-            }
-
-            .pricing-card.featured {
-                transform: none;
-            }
-
-            .pricing-card.featured:hover {
-                transform: translateY(-4px);
-            }
-
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links,
-            .nav-cta {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero {
-                padding: 120px 0 60px;
-            }
-
-            .hero-text h1 {
-                font-size: 32px;
-            }
-
-            .hero-subtitle {
-                font-size: 16px;
-            }
-
-            .hero-stats {
-                flex-direction: column;
-                gap: 24px;
-                align-items: center;
-            }
-
-            .stat {
-                text-align: center;
-            }
-
-            .section-title {
-                font-size: 28px;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .documents-visual {
-                grid-template-columns: 1fr;
-            }
-
-            .compliance-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .savings-amount {
-                font-size: 48px;
-            }
-
-            .savings-subtitle {
-                font-size: 18px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .footer-brand p {
-                margin: 16px auto 0;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 20px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-content">
-            <a href="#" class="logo">
-                <img src="/src/app/shared/assets/docsynk_full.png" alt="DocSynk Logo">
-            </a>
-            <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#documents">Documents</a></li>
-                <li><a href="#compliance">Compliance</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-            </ul>
-            <div class="nav-cta">
-                <a href="#" class="btn btn-secondary">Log In</a>
-                <a href="#demo" class="btn btn-primary">Get Demo</a>
-            </div>
-            <button class="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+      <div class="nav-content">
+        <a href="#" class="logo">
+          <img
+            src="/src/app/shared/assets/docsynk_full.png"
+            alt="DocSynk Logo"
+          />
+        </a>
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#documents">Documents</a></li>
+          <li><a href="#compliance">Compliance</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="#" class="btn btn-secondary">Log In</a>
+          <a href="#demo" class="btn btn-primary">Get Demo</a>
         </div>
+        <button
+          class="mobile-menu-btn"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Document Management Built for <span>International Logistics</span></h1>
-                    <p class="hero-subtitle">Handle bills of lading, customs forms, and shipping manifests with AI-powered OCR and multi-jurisdiction compliance. Stop losing money to documentation inefficiencies.</p>
-                    <div>
-                        <a href="#demo" class="btn btn-primary btn-large">Start Free Trial</a>
-                        <a href="#" class="btn btn-secondary btn-large btn-spacing">Watch Demo</a>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <div class="stat-value">$47K</div>
-                            <div class="stat-label">Average Annual Savings</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">85%</div>
-                            <div class="stat-label">Faster Processing</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">99.9%</div>
-                            <div class="stat-label">OCR Accuracy</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="hero-image">
-                        <div class="dashboard-preview">
-                            <div class="dashboard-header">
-                                <span class="dashboard-title">Recent Documents</span>
-                                <span class="status-badge">3 New</span>
-                            </div>
-                            <div class="doc-list">
-                                <div class="doc-item">
-                                    <div class="doc-icon">📋</div>
-                                    <div class="doc-info">
-                                        <h4>Bill of Lading #BL-2024-1847</h4>
-                                        <p>Shanghai → Rotterdam • OCR Complete</p>
-                                    </div>
-                                    <span class="doc-status verified">Verified</span>
-                                </div>
-                                <div class="doc-item">
-                                    <div class="doc-icon">📦</div>
-                                    <div class="doc-info">
-                                        <h4>Customs Form CF-4582</h4>
-                                        <p>US Import • Awaiting Review</p>
-                                    </div>
-                                    <span class="doc-status pending">Pending</span>
-                                </div>
-                                <div class="doc-item">
-                                    <div class="doc-icon">🚢</div>
-                                    <div class="doc-info">
-                                        <h4>Shipping Manifest SM-9921</h4>
-                                        <p>Multi-Container • Processing</p>
-                                    </div>
-                                    <span class="doc-status processing">Processing</span>
-                                </div>
-                                <div class="doc-item">
-                                    <div class="doc-icon">📑</div>
-                                    <div class="doc-info">
-                                        <h4>Certificate of Origin CO-3312</h4>
-                                        <p>EU Export • Compliance Check</p>
-                                    </div>
-                                    <span class="doc-status verified">Verified</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Document Management Built for <span>Logistics</span></h1>
+            <p class="hero-subtitle">
+              Handle bills of lading, customs forms, and shipping manifests with
+              AI-powered OCR and multi-jurisdiction compliance. Stop losing
+              money to documentation inefficiencies.
+            </p>
+            <div>
+              <a href="#demo" class="btn btn-primary btn-large"
+                >Start Free Trial</a
+              >
+              <a href="#" class="btn btn-secondary btn-large btn-spacing"
+                >Watch Demo</a
+              >
             </div>
+            <div class="hero-stats">
+              <div class="stat">
+                <div class="stat-value">$47K</div>
+                <div class="stat-label">Average Annual Savings</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value">85%</div>
+                <div class="stat-label">Faster Processing</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value">99.9%</div>
+                <div class="stat-label">OCR Accuracy</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-image">
+              <div class="dashboard-preview">
+                <div class="dashboard-header">
+                  <span class="dashboard-title">Recent Documents</span>
+                  <span class="status-badge">3 New</span>
+                </div>
+                <div class="doc-list">
+                  <div class="doc-item">
+                    <div class="doc-icon">📋</div>
+                    <div class="doc-info">
+                      <h4>Bill of Lading #BL-2024-1847</h4>
+                      <p>Shanghai → Rotterdam • OCR Complete</p>
+                    </div>
+                    <span class="doc-status verified">Verified</span>
+                  </div>
+                  <div class="doc-item">
+                    <div class="doc-icon">📦</div>
+                    <div class="doc-info">
+                      <h4>Customs Form CF-4582</h4>
+                      <p>US Import • Awaiting Review</p>
+                    </div>
+                    <span class="doc-status pending">Pending</span>
+                  </div>
+                  <div class="doc-item">
+                    <div class="doc-icon">🚢</div>
+                    <div class="doc-info">
+                      <h4>Shipping Manifest SM-9921</h4>
+                      <p>Multi-Container • Processing</p>
+                    </div>
+                    <span class="doc-status processing">Processing</span>
+                  </div>
+                  <div class="doc-item">
+                    <div class="doc-icon">📑</div>
+                    <div class="doc-info">
+                      <h4>Certificate of Origin CO-3312</h4>
+                      <p>EU Export • Compliance Check</p>
+                    </div>
+                    <span class="doc-status verified">Verified</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Features Section -->
     <section class="features" id="features">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">Features</p>
-                <h2 class="section-title">Everything You Need for Logistics Documentation</h2>
-                <p class="section-description">Purpose-built for freight forwarders, customs brokers, and shipping companies handling complex international documentation.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3>Logistics-Trained OCR</h3>
-                    <p>Our AI is specifically trained on logistics documents—bills of lading, customs forms, and shipping manifests. Extract data with 99.9% accuracy.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⏰</div>
-                    <h3>Detention Charge Prevention</h3>
-                    <p>Automated alerts and deadline tracking prevent costly container detention and demurrage charges. Never miss a free time deadline again.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🤝</div>
-                    <h3>Freight Forwarder Collaboration</h3>
-                    <p>Seamless document sharing with partners, agents, and clients. Real-time updates and audit trails keep everyone aligned.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3>Multi-Jurisdiction Compliance</h3>
-                    <p>Stay compliant across 150+ countries. Automatic validation against local customs requirements and trade regulations.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🏢</div>
-                    <h3>Multi-Tenant Architecture</h3>
-                    <p>Dedicated subdomains for each tenant with complete data isolation. Scale your operations while maintaining security.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Analytics & Reporting</h3>
-                    <p>Track document processing times, identify bottlenecks, and optimize your documentation workflow with actionable insights.</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Features</p>
+          <h2 class="section-title">
+            Everything You Need for Logistics Documentation
+          </h2>
+          <p class="section-description">
+            Purpose-built for freight forwarders, customs brokers, and shipping
+            companies handling complex logistics documentation.
+          </p>
         </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>Logistics-Trained OCR</h3>
+            <p>
+              Our AI is specifically trained on logistics documents—bills of
+              lading, customs forms, and shipping manifests. Extract data with
+              99.9% accuracy.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⏰</div>
+            <h3>Detention Charge Prevention</h3>
+            <p>
+              Automated alerts and deadline tracking prevent costly container
+              detention and demurrage charges. Never miss a free time deadline
+              again.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🤝</div>
+            <h3>Freight Forwarder Collaboration</h3>
+            <p>
+              Seamless document sharing with partners, agents, and clients.
+              Real-time updates and audit trails keep everyone aligned.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🌍</div>
+            <h3>Multi-Jurisdiction Compliance</h3>
+            <p>
+              Stay compliant across 150+ countries. Automatic validation against
+              local customs requirements and trade regulations.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🏢</div>
+            <h3>Multi-Tenant Architecture</h3>
+            <p>
+              Dedicated subdomains for each tenant with complete data isolation.
+              Scale your operations while maintaining security.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Analytics & Reporting</h3>
+            <p>
+              Track document processing times, identify bottlenecks, and
+              optimize your documentation workflow with actionable insights.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Documents Section -->
     <section class="documents" id="documents">
-        <div class="container">
-            <div class="documents-content">
-                <div class="documents-visual">
-                    <div class="doc-type-card">
-                        <div class="doc-type-icon">📋</div>
-                        <h4>Bills of Lading</h4>
-                        <p>Master & House B/L processing</p>
-                    </div>
-                    <div class="doc-type-card">
-                        <div class="doc-type-icon">📦</div>
-                        <h4>Customs Forms</h4>
-                        <p>Import/Export declarations</p>
-                    </div>
-                    <div class="doc-type-card">
-                        <div class="doc-type-icon">🚢</div>
-                        <h4>Shipping Manifests</h4>
-                        <p>Cargo & container lists</p>
-                    </div>
-                    <div class="doc-type-card">
-                        <div class="doc-type-icon">📑</div>
-                        <h4>Certificates</h4>
-                        <p>Origin, inspection & more</p>
-                    </div>
-                    <div class="doc-type-card">
-                        <div class="doc-type-icon">💳</div>
-                        <h4>Commercial Invoices</h4>
-                        <p>Trade documentation</p>
-                    </div>
-                    <div class="doc-type-card">
-                        <div class="doc-type-icon">📝</div>
-                        <h4>Packing Lists</h4>
-                        <p>Detailed cargo information</p>
-                    </div>
-                </div>
-                <div class="documents-text">
-                    <p class="section-label">Document Types</p>
-                    <h2 class="section-title">Handle Every Logistics Document with Confidence</h2>
-                    <p class="section-description">From bills of lading to customs declarations, DocSynk processes and manages all your critical shipping documents in one unified platform.</p>
-                    <ul class="doc-features-list">
-                        <li>
-                            <span class="check-icon">✓</span>
-                            Automatic document classification and routing
-                        </li>
-                        <li>
-                            <span class="check-icon">✓</span>
-                            Cross-reference validation across document sets
-                        </li>
-                        <li>
-                            <span class="check-icon">✓</span>
-                            Version control and amendment tracking
-                        </li>
-                        <li>
-                            <span class="check-icon">✓</span>
-                            Digital signatures and authentication
-                        </li>
-                        <li>
-                            <span class="check-icon">✓</span>
-                            Secure archival with instant retrieval
-                        </li>
-                    </ul>
-                </div>
+      <div class="container">
+        <div class="documents-content">
+          <div class="documents-visual">
+            <div class="doc-type-card">
+              <div class="doc-type-icon">📋</div>
+              <h4>Bills of Lading</h4>
+              <p>Master & House B/L processing</p>
             </div>
+            <div class="doc-type-card">
+              <div class="doc-type-icon">📦</div>
+              <h4>Customs Forms</h4>
+              <p>Import/Export declarations</p>
+            </div>
+            <div class="doc-type-card">
+              <div class="doc-type-icon">🚢</div>
+              <h4>Shipping Manifests</h4>
+              <p>Cargo & container lists</p>
+            </div>
+            <div class="doc-type-card">
+              <div class="doc-type-icon">📑</div>
+              <h4>Certificates</h4>
+              <p>Origin, inspection & more</p>
+            </div>
+            <div class="doc-type-card">
+              <div class="doc-type-icon">💳</div>
+              <h4>Commercial Invoices</h4>
+              <p>Trade documentation</p>
+            </div>
+            <div class="doc-type-card">
+              <div class="doc-type-icon">📝</div>
+              <h4>Packing Lists</h4>
+              <p>Detailed cargo information</p>
+            </div>
+          </div>
+          <div class="documents-text">
+            <p class="section-label">Document Types</p>
+            <h2 class="section-title">
+              Handle Every Logistics Document with Confidence
+            </h2>
+            <p class="section-description">
+              From bills of lading to customs declarations, DocSynk processes
+              and manages all your critical shipping documents in one unified
+              platform.
+            </p>
+            <ul class="doc-features-list">
+              <li>
+                <span class="check-icon">✓</span>
+                Automatic document classification and routing
+              </li>
+              <li>
+                <span class="check-icon">✓</span>
+                Cross-reference validation across document sets
+              </li>
+              <li>
+                <span class="check-icon">✓</span>
+                Version control and amendment tracking
+              </li>
+              <li>
+                <span class="check-icon">✓</span>
+                Digital signatures and authentication
+              </li>
+              <li>
+                <span class="check-icon">✓</span>
+                Secure archival with instant retrieval
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Compliance Section -->
     <section class="compliance" id="compliance">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">Global Compliance</p>
-                <h2 class="section-title">Multi-Jurisdiction Compliance Made Simple</h2>
-                <p class="section-description">Navigate complex international trade regulations with built-in compliance checks for major trading regions.</p>
-            </div>
-            <div class="compliance-grid">
-                <div class="compliance-card">
-                    <div class="compliance-icon">🇺🇸</div>
-                    <h4>US Customs</h4>
-                    <p>CBP, ACE, and ISF compliance</p>
-                </div>
-                <div class="compliance-card">
-                    <div class="compliance-icon">🇪🇺</div>
-                    <h4>EU Regulations</h4>
-                    <p>UCC, ICS2, and GDPR ready</p>
-                </div>
-                <div class="compliance-card">
-                    <div class="compliance-icon">🇨🇳</div>
-                    <h4>China Trade</h4>
-                    <p>GACC and Single Window support</p>
-                </div>
-                <div class="compliance-card">
-                    <div class="compliance-icon">🌏</div>
-                    <h4>APAC Region</h4>
-                    <p>Multi-country requirements</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Global Compliance</p>
+          <h2 class="section-title">
+            Multi-Jurisdiction Compliance Made Simple
+          </h2>
+          <p class="section-description">
+            Navigate complex trade regulations with built-in compliance checks
+            for major trading regions.
+          </p>
         </div>
+        <div class="compliance-grid">
+          <div class="compliance-card">
+            <div class="compliance-icon">🇺🇸</div>
+            <h4>US Customs</h4>
+            <p>CBP, ACE, and ISF compliance</p>
+          </div>
+          <div class="compliance-card">
+            <div class="compliance-icon">🇪🇺</div>
+            <h4>EU Regulations</h4>
+            <p>UCC, ICS2, and GDPR ready</p>
+          </div>
+          <div class="compliance-card">
+            <div class="compliance-icon">🇨🇳</div>
+            <h4>China Trade</h4>
+            <p>GACC and Single Window support</p>
+          </div>
+          <div class="compliance-card">
+            <div class="compliance-icon">🌏</div>
+            <h4>APAC Region</h4>
+            <p>Multi-country requirements</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Savings Section -->
     <section class="savings">
-        <div class="container">
-            <div class="savings-amount">$47,000</div>
-            <div class="savings-subtitle">Average Annual Savings Per Company</div>
-            <p class="savings-description">Documentation inefficiencies cost logistics companies an average of $47,000 per year. DocSynk eliminates manual data entry errors, prevents detention charges, and accelerates customs clearance.</p>
-            <a href="#demo" class="btn btn-primary btn-large">Calculate Your Savings →</a>
-        </div>
+      <div class="container">
+        <div class="savings-amount">$47,000</div>
+        <div class="savings-subtitle">Average Annual Savings Per Company</div>
+        <p class="savings-description">
+          Documentation inefficiencies cost logistics companies an average of
+          $47,000 per year. DocSynk eliminates manual data entry errors,
+          prevents detention charges, and accelerates customs clearance.
+        </p>
+        <a href="#demo" class="btn btn-primary btn-large"
+          >Calculate Your Savings →</a
+        >
+      </div>
     </section>
 
     <!-- Pricing Section -->
     <section class="pricing" id="pricing">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">Pricing</p>
-                <h2 class="section-title">Plans That Scale With Your Business</h2>
-                <p class="section-description">Start with a free trial. No credit card required.</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3 class="pricing-name">Starter</h3>
-                    <p class="pricing-description">For small freight operations</p>
-                    <div class="pricing-amount">$299<span>/month</span></div>
-                    <ul class="pricing-features">
-                        <li>Up to 500 documents/month</li>
-                        <li>5 team members</li>
-                        <li>Basic OCR processing</li>
-                        <li>Email support</li>
-                        <li>10 GB storage</li>
-                    </ul>
-                    <a href="#" class="btn btn-secondary">Start Free Trial</a>
-                </div>
-                <div class="pricing-card featured">
-                    <span class="pricing-badge">Most Popular</span>
-                    <h3 class="pricing-name">Professional</h3>
-                    <p class="pricing-description">For growing logistics companies</p>
-                    <div class="pricing-amount">$799<span>/month</span></div>
-                    <ul class="pricing-features">
-                        <li>Up to 2,500 documents/month</li>
-                        <li>25 team members</li>
-                        <li>Advanced OCR with AI validation</li>
-                        <li>Priority support</li>
-                        <li>50 GB storage</li>
-                        <li>API access</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary">Start Free Trial</a>
-                </div>
-                <div class="pricing-card">
-                    <h3 class="pricing-name">Enterprise</h3>
-                    <p class="pricing-description">For large operations</p>
-                    <div class="pricing-amount">Custom</div>
-                    <ul class="pricing-features">
-                        <li>Unlimited documents</li>
-                        <li>Unlimited team members</li>
-                        <li>Custom integrations</li>
-                        <li>Dedicated success manager</li>
-                        <li>Unlimited storage</li>
-                        <li>SLA guarantee</li>
-                    </ul>
-                    <a href="#" class="btn btn-secondary">Contact Sales</a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Pricing</p>
+          <h2 class="section-title">Plans That Scale With Your Business</h2>
+          <p class="section-description">
+            Start with a free trial. No credit card required.
+          </p>
         </div>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3 class="pricing-name">Starter</h3>
+            <p class="pricing-description">For small freight operations</p>
+            <div class="pricing-amount">$299<span>/month</span></div>
+            <ul class="pricing-features">
+              <li>Up to 500 documents/month</li>
+              <li>5 team members</li>
+              <li>Basic OCR processing</li>
+              <li>Email support</li>
+              <li>10 GB storage</li>
+            </ul>
+            <a href="#" class="btn btn-secondary">Start Free Trial</a>
+          </div>
+          <div class="pricing-card featured">
+            <span class="pricing-badge">Most Popular</span>
+            <h3 class="pricing-name">Professional</h3>
+            <p class="pricing-description">For growing logistics companies</p>
+            <div class="pricing-amount">$799<span>/month</span></div>
+            <ul class="pricing-features">
+              <li>Up to 2,500 documents/month</li>
+              <li>25 team members</li>
+              <li>Advanced OCR with AI validation</li>
+              <li>Priority support</li>
+              <li>50 GB storage</li>
+              <li>API access</li>
+            </ul>
+            <a href="#" class="btn btn-primary">Start Free Trial</a>
+          </div>
+          <div class="pricing-card">
+            <h3 class="pricing-name">Enterprise</h3>
+            <p class="pricing-description">For large operations</p>
+            <div class="pricing-amount">Custom</div>
+            <ul class="pricing-features">
+              <li>Unlimited documents</li>
+              <li>Unlimited team members</li>
+              <li>Custom integrations</li>
+              <li>Dedicated success manager</li>
+              <li>Unlimited storage</li>
+              <li>SLA guarantee</li>
+            </ul>
+            <a href="#" class="btn btn-secondary">Contact Sales</a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta" id="demo">
-        <div class="container">
-            <div class="cta-content">
-                <p class="section-label">Get Started Today</p>
-                <h2 class="section-title">Ready to Transform Your Documentation Workflow?</h2>
-                <p class="section-description">Join hundreds of logistics companies already saving time and money with DocSynk.</p>
-                <div class="cta-buttons">
-                    <a href="#" class="btn btn-primary btn-large">Start 14-Day Free Trial</a>
-                    <a href="#" class="btn btn-secondary btn-large">Schedule a Demo</a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="cta-content">
+          <p class="section-label">Get Started Today</p>
+          <h2 class="section-title">
+            Ready to Transform Your Documentation Workflow?
+          </h2>
+          <p class="section-description">
+            Join hundreds of logistics companies already saving time and money
+            with DocSynk.
+          </p>
+          <div class="cta-buttons">
+            <a href="#" class="btn btn-primary btn-large"
+              >Start 14-Day Free Trial</a
+            >
+            <a href="#" class="btn btn-secondary btn-large">Schedule a Demo</a>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <div class="logo-icon">📄</div>
-                        DocSynk
-                    </a>
-                    <p>Document management system built specifically for international logistics companies. Handle your documentation with confidence.</p>
-                </div>
-                <div class="footer-column">
-                    <h4>Product</h4>
-                    <ul>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#">Integrations</a></li>
-                        <li><a href="#">API Docs</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Press</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 DocSynk. All rights reserved.</p>
-                <div class="footer-social">
-                    <a href="#" aria-label="LinkedIn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    </a>
-                    <a href="#" aria-label="Twitter">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    </a>
-                    <a href="#" aria-label="GitHub">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    </a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <a href="#" class="logo">
+              <div class="logo-icon">📄</div>
+              DocSynk
+            </a>
+            <p>
+              Document management system built specifically for logistics
+              companies. Handle your documentation with confidence.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#">Integrations</a></li>
+              <li><a href="#">API Docs</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Press</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 DocSynk. All rights reserved.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="LinkedIn">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                />
+              </svg>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
+            </a>
+            <a href="#" aria-label="GitHub">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

@@ -70,9 +70,9 @@ export class About implements OnInit {
 
   ngOnInit() {
     this.seoService.updateMetaTags({
-      title: 'About Us - DocSynk | Transforming International Shipping Documentation',
+      title: 'About Us - DocSynk | Transforming Shipping Documentation',
       description: 'Learn how DocSynk is revolutionizing logistics with AI-powered documentation automation. Trusted by 200+ companies across 47 countries.',
-      keywords: 'about docsynk, logistics automation company, shipping software team, international trade technology',
+      keywords: 'about docsynk, logistics automation company, shipping software team, trade technology',
       url: 'https://docsynk.cloud/about'
     });
     this.analyticsService.trackPageView('/about', 'About Page');

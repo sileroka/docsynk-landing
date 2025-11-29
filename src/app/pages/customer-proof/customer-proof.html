@@ -4,7 +4,8 @@
     <div class="header-content">
       <h1 class="page-title">Trusted by Leading Logistics Companies</h1>
       <p class="page-subtitle">
-        Join hundreds of companies saving millions in documentation costs and shipping delays.
+        Join hundreds of companies saving millions in documentation costs and
+        shipping delays.
       </p>
     </div>
   </div>
@@ -25,16 +26,32 @@
               <div class="rating">
                 <p-skeleton width="120px" height="20px"></p-skeleton>
               </div>
-              
+
               <blockquote class="quote">
-                <p-skeleton width="100%" height="120px" styleClass="mb-3"></p-skeleton>
+                <p-skeleton
+                  width="100%"
+                  height="120px"
+                  styleClass="mb-3"
+                ></p-skeleton>
               </blockquote>
-              
+
               <div class="author-section">
-                <p-skeleton shape="circle" size="4rem" styleClass="mr-3"></p-skeleton>
-                <div class="author-info" style="flex: 1;">
-                  <p-skeleton width="150px" height="20px" styleClass="mb-2"></p-skeleton>
-                  <p-skeleton width="120px" height="16px" styleClass="mb-2"></p-skeleton>
+                <p-skeleton
+                  shape="circle"
+                  size="4rem"
+                  styleClass="mr-3"
+                ></p-skeleton>
+                <div class="author-info" style="flex: 1">
+                  <p-skeleton
+                    width="150px"
+                    height="20px"
+                    styleClass="mb-2"
+                  ></p-skeleton>
+                  <p-skeleton
+                    width="120px"
+                    height="16px"
+                    styleClass="mb-2"
+                  ></p-skeleton>
                   <p-skeleton width="180px" height="16px"></p-skeleton>
                 </div>
               </div>
@@ -51,12 +68,16 @@
           [circular]="true"
           [autoplayInterval]="5000"
           [responsiveOptions]="responsiveOptions"
-          styleClass="testimonials-carousel">
+          styleClass="testimonials-carousel"
+        >
           <ng-template let-testimonial pTemplate="item">
             <p-card styleClass="testimonial-card">
               <div class="testimonial-content">
                 <div class="rating">
-                  <i *ngFor="let star of getStars(testimonial.rating)" class="pi pi-star-fill"></i>
+                  <i
+                    *ngFor="let star of getStars(testimonial.rating)"
+                    class="pi pi-star-fill"
+                  ></i>
                 </div>
 
                 <blockquote class="quote">
@@ -69,7 +90,8 @@
                     [label]="testimonial.avatar"
                     size="xlarge"
                     shape="circle"
-                    styleClass="author-avatar">
+                    styleClass="author-avatar"
+                  >
                   </p-avatar>
                   <div class="author-info">
                     <div class="author-name">{{ testimonial.author }}</div>
@@ -89,7 +111,7 @@
   <div class="logos-section">
     <div class="section-container">
       <h3 class="logos-title">Powering Operations For</h3>
-      
+
       <div class="logos-grid">
         <p-avatargroup styleClass="logos-avatargroup">
           <p-avatar
@@ -97,14 +119,13 @@
             [label]="logo"
             size="xlarge"
             shape="circle"
-            [class]="getAvatarColor(i)">
+            [class]="getAvatarColor(i)"
+          >
           </p-avatar>
         </p-avatargroup>
       </div>
-      
-      <p class="logos-note">
-        And 200+ other companies across 6 continents
-      </p>
+
+      <p class="logos-note">And 200+ other companies across 6 continents</p>
     </div>
   </div>
 
@@ -118,7 +139,8 @@
           [class]="'stat-' + stat.color"
           pAnimateOnScroll
           enterClass="fadeinup"
-          leaveClass="fadeout">
+          leaveClass="fadeout"
+        >
           <div class="stat-icon">
             <i [class]="'pi ' + stat.icon"></i>
           </div>
@@ -144,7 +166,8 @@
           icon="pi pi-check"
           routerLink="/demo-request"
           styleClass="cta-primary"
-          [raised]="true">
+          [raised]="true"
+        >
         </p-button>
         <p-button
           label="View Pricing"
@@ -152,7 +175,8 @@
           routerLink="/pricing"
           styleClass="cta-secondary"
           severity="secondary"
-          [outlined]="true">
+          [raised]="true"
+        >
         </p-button>
       </div>
     </div>
