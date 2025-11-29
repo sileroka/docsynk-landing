@@ -72,7 +72,7 @@ export class Header implements OnInit {
             label: 'Documentation',
             icon: 'pi pi-file',
             command: () => {
-              window.open('https://docs.docsynk.cloud', '_blank');
+              this.router.navigate(['/documentation']);
               this.isMobileMenuVisible = false;
             }
           },
@@ -80,7 +80,7 @@ export class Header implements OnInit {
             label: 'API',
             icon: 'pi pi-code',
             command: () => {
-              window.open('https://api.docsynk.cloud/docs', '_blank');
+              this.router.navigate(['/api']);
               this.isMobileMenuVisible = false;
             }
           }

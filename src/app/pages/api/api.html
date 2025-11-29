@@ -1,0 +1,826 @@
+<div class="api-page">
+  <div class="api-container grid">
+    <!-- Sidebar -->
+    <div class="col-12 lg:col-3">
+      <div class="api-sidebar">
+        <div class="sidebar-content">
+          <h4 class="sidebar-section-title">Getting Started</h4>
+          <ul class="sidebar-menu">
+            <li>
+              <a
+                (click)="scrollToSection('overview')"
+                class="sidebar-link"
+                [class.active]="isActive('overview')"
+                >Overview</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('authentication')"
+                class="sidebar-link"
+                [class.active]="isActive('authentication')"
+                >Authentication</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('rate-limits')"
+                class="sidebar-link"
+                [class.active]="isActive('rate-limits')"
+                >Rate Limits</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('errors')"
+                class="sidebar-link"
+                [class.active]="isActive('errors')"
+                >Error Handling</a
+              >
+            </li>
+          </ul>
+
+          <h4 class="sidebar-section-title">Shipments</h4>
+          <ul class="sidebar-menu">
+            <li>
+              <a
+                (click)="scrollToSection('list-shipments')"
+                class="sidebar-link"
+                [class.active]="isActive('list-shipments')"
+                >List Shipments</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('create-shipment')"
+                class="sidebar-link"
+                [class.active]="isActive('create-shipment')"
+                >Create Shipment</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('get-shipment')"
+                class="sidebar-link"
+                [class.active]="isActive('get-shipment')"
+                >Get Shipment</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('update-shipment')"
+                class="sidebar-link"
+                [class.active]="isActive('update-shipment')"
+                >Update Shipment</a
+              >
+            </li>
+          </ul>
+
+          <h4 class="sidebar-section-title">Documents</h4>
+          <ul class="sidebar-menu">
+            <li>
+              <a
+                (click)="scrollToSection('upload-document')"
+                class="sidebar-link"
+                [class.active]="isActive('upload-document')"
+                >Upload Document</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('get-document')"
+                class="sidebar-link"
+                [class.active]="isActive('get-document')"
+                >Get Document</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('ocr-status')"
+                class="sidebar-link"
+                [class.active]="isActive('ocr-status')"
+                >OCR Status</a
+              >
+            </li>
+          </ul>
+
+          <h4 class="sidebar-section-title">Compliance</h4>
+          <ul class="sidebar-menu">
+            <li>
+              <a
+                (click)="scrollToSection('check-compliance')"
+                class="sidebar-link"
+                [class.active]="isActive('check-compliance')"
+                >Check Compliance</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('compliance-rules')"
+                class="sidebar-link"
+                [class.active]="isActive('compliance-rules')"
+                >List Rules</a
+              >
+            </li>
+          </ul>
+
+          <h4 class="sidebar-section-title">Webhooks</h4>
+          <ul class="sidebar-menu">
+            <li>
+              <a
+                (click)="scrollToSection('webhook-setup')"
+                class="sidebar-link"
+                [class.active]="isActive('webhook-setup')"
+                >Setup</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('webhook-events')"
+                class="sidebar-link"
+                [class.active]="isActive('webhook-events')"
+                >Events</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-12 lg:col-9">
+      <div class="api-content">
+        <h1 class="api-main-title">API Documentation</h1>
+        <p class="api-subtitle">
+          RESTful API for programmatic access to DocSynk
+        </p>
+
+        <!-- Base URL Box -->
+        <p-card class="base-url-card">
+          <h4>Base URL</h4>
+          <div class="base-url">https://app.docsynk.cloud/api/v1</div>
+        </p-card>
+
+        <!-- Overview -->
+        <section id="overview" class="api-section">
+          <h2>Overview</h2>
+          <p>
+            The DocSynk API is organized around REST. Our API has predictable
+            resource-oriented URLs, accepts JSON-encoded request bodies, returns
+            JSON-encoded responses, and uses standard HTTP response codes and
+            verbs.
+          </p>
+
+          <h3>Quick Start</h3>
+          <ol>
+            <li>Get your API key from Settings → API Keys</li>
+            <li>Include the key in the Authorization header</li>
+            <li>Make your first API call</li>
+          </ol>
+
+          <div class="code-block">
+            <pre>
+curl https://app.docsynk.cloud/api/v1/shipments \
+  -H "Authorization: Bearer YOUR_API_KEY"</pre
+            >
+          </div>
+        </section>
+
+        <!-- Authentication -->
+        <section id="authentication" class="api-section">
+          <h2>Authentication</h2>
+          <p>
+            DocSynk uses API keys to authenticate requests. You can view and
+            manage your API keys in the DocSynk Dashboard.
+          </p>
+
+          <p-card class="auth-card">
+            <h4>Authentication Header</h4>
+            <p>
+              Include your API key in all API requests via the Authorization
+              header:
+            </p>
+            <div class="code-block">
+              <pre>Authorization: Bearer your_secret_key_here</pre>
+            </div>
+          </p-card>
+
+          <p-message severity="warn" styleClass="mt-3">
+            <span
+              >Keep your API keys secure! Do not share them in publicly
+              accessible areas such as GitHub, client-side code, etc.</span
+            >
+          </p-message>
+        </section>
+
+        <!-- Rate Limits -->
+        <section id="rate-limits" class="api-section">
+          <h2>Rate Limits</h2>
+          <p>API requests are rate limited based on your subscription plan:</p>
+
+          <div class="rate-limits-table">
+            <table class="w-full">
+              <thead>
+                <tr>
+                  <th>Plan</th>
+                  <th>Requests/Hour</th>
+                  <th>Burst Limit</th>
+                  <th>Concurrent Uploads</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Starter</td>
+                  <td>1,000</td>
+                  <td>100/min</td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <td>Professional</td>
+                  <td>10,000</td>
+                  <td>500/min</td>
+                  <td>20</td>
+                </tr>
+                <tr>
+                  <td>Enterprise</td>
+                  <td>Unlimited</td>
+                  <td>Custom</td>
+                  <td>Unlimited</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Rate Limit Headers</h4>
+          <p>Check response headers to monitor your rate limit status:</p>
+          <ul>
+            <li><code>X-RateLimit-Limit</code> - Requests allowed per hour</li>
+            <li><code>X-RateLimit-Remaining</code> - Remaining requests</li>
+            <li>
+              <code>X-RateLimit-Reset</code> - Unix timestamp when limit resets
+            </li>
+          </ul>
+        </section>
+
+        <!-- Error Handling -->
+        <section id="errors" class="api-section">
+          <h2>Error Handling</h2>
+          <p>
+            DocSynk uses conventional HTTP response codes to indicate success or
+            failure:
+          </p>
+
+          <div class="grid">
+            <div class="col-12 md:col-6">
+              <p-card class="success-card">
+                <h4>Success Codes</h4>
+                <ul>
+                  <li><strong>200 OK</strong> - Request succeeded</li>
+                  <li><strong>201 Created</strong> - Resource created</li>
+                  <li>
+                    <strong>204 No Content</strong> - Request succeeded, no
+                    content
+                  </li>
+                </ul>
+              </p-card>
+            </div>
+            <div class="col-12 md:col-6">
+              <p-card class="error-card">
+                <h4>Error Codes</h4>
+                <ul>
+                  <li><strong>400 Bad Request</strong> - Invalid parameters</li>
+                  <li><strong>401 Unauthorized</strong> - Invalid API key</li>
+                  <li>
+                    <strong>404 Not Found</strong> - Resource doesn't exist
+                  </li>
+                  <li><strong>429 Too Many Requests</strong> - Rate limited</li>
+                  <li>
+                    <strong>500 Server Error</strong> - Something went wrong
+                  </li>
+                </ul>
+              </p-card>
+            </div>
+          </div>
+
+          <h4>Error Response Format</h4>
+          <div class="code-block">
+            <pre>
+&#123;
+  "error": &#123;
+    "type": "invalid_request_error",
+    "message": "Shipment reference is required",
+    "code": "missing_parameter",
+    "param": "reference"
+  &#125;
+&#125;</pre
+            >
+          </div>
+        </section>
+
+        <!-- List Shipments -->
+        <section id="list-shipments" class="api-section">
+          <p-card class="endpoint-card">
+            <div class="endpoint-header">
+              <span class="method-badge method-get">GET</span>
+              <h3>/shipments</h3>
+            </div>
+
+            <p>
+              Returns a paginated list of shipments. Results can be filtered by
+              date, status, or reference.
+            </p>
+
+            <h4>Query Parameters</h4>
+            <div class="params-table">
+              <table class="w-full">
+                <tbody>
+                  <tr>
+                    <td><code>limit</code></td>
+                    <td>integer</td>
+                    <td>Number of results (1-100, default: 20)</td>
+                  </tr>
+                  <tr>
+                    <td><code>offset</code></td>
+                    <td>integer</td>
+                    <td>Pagination offset (default: 0)</td>
+                  </tr>
+                  <tr>
+                    <td><code>status</code></td>
+                    <td>string</td>
+                    <td>Filter by status: draft, active, completed</td>
+                  </tr>
+                  <tr>
+                    <td><code>from_date</code></td>
+                    <td>ISO 8601</td>
+                    <td>Start date filter</td>
+                  </tr>
+                  <tr>
+                    <td><code>to_date</code></td>
+                    <td>ISO 8601</td>
+                    <td>End date filter</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Example Request</h4>
+            <div class="code-block">
+              <pre>
+curl "https://app.docsynk.cloud/api/v1/shipments?limit=10&status=active" \
+  -H "Authorization: Bearer YOUR_API_KEY"</pre
+              >
+            </div>
+
+            <h4>Example Response</h4>
+            <div class="code-block">
+              <pre>
+&#123;
+  "data": [
+    &#123;
+      "id": "shp_1a2b3c4d",
+      "reference": "MBOL-2024-001234",
+      "status": "active",
+      "origin": &#123;
+        "country": "CN",
+        "port": "CNSHA"
+      &#125;,
+      "destination": &#123;
+        "country": "US",
+        "port": "USLAX"
+      &#125;,
+      "documents_count": 12,
+      "compliance_status": "passed",
+      "created_at": "2024-01-15T10:30:00Z"
+    &#125;
+  ],
+  "pagination": &#123;
+    "total": 142,
+    "limit": 10,
+    "offset": 0
+  &#125;
+&#125;</pre
+              >
+            </div>
+          </p-card>
+        </section>
+
+        <!-- Create Shipment -->
+        <section id="create-shipment" class="api-section">
+          <p-card class="endpoint-card">
+            <div class="endpoint-header">
+              <span class="method-badge method-post">POST</span>
+              <h3>/shipments</h3>
+            </div>
+
+            <p>Creates a new shipment with the provided details.</p>
+
+            <h4>Request Body</h4>
+            <div class="code-block">
+              <pre>
+&#123;
+  "reference": "MBOL-2024-001235",
+  "transport_mode": "ocean",
+  "origin": &#123;
+    "country": "CN",
+    "port": "CNSHA",
+    "etd": "2024-02-01"
+  &#125;,
+  "destination": &#123;
+    "country": "US",
+    "port": "USLAX",
+    "eta": "2024-02-20"
+  &#125;,
+  "shipper": &#123;
+    "name": "Shanghai Export Co",
+    "address": "123 Export Road, Shanghai",
+    "tax_id": "CN123456789"
+  &#125;,
+  "consignee": &#123;
+    "name": "US Import Inc",
+    "address": "456 Import Ave, Los Angeles",
+    "tax_id": "US987654321"
+  &#125;,
+  "cargo": &#123;
+    "description": "Electronic Components",
+    "hs_code": "8542310000",
+    "packages": 1000,
+    "weight_kg": 5000,
+    "value_usd": 150000
+  &#125;
+&#125;</pre
+              >
+            </div>
+
+            <h4>Response</h4>
+            <div class="code-block">
+              <pre>
+&#123;
+  "id": "shp_1a2b3c4e",
+  "reference": "MBOL-2024-001235",
+  "status": "draft",
+  "compliance_checks": &#123;
+    "us_isf": "required",
+    "china_acd": "required"
+  &#125;,
+  "created_at": "2024-01-20T14:22:00Z"
+&#125;</pre
+              >
+            </div>
+          </p-card>
+        </section>
+
+        <!-- Get Shipment -->
+        <section id="get-shipment" class="api-section">
+          <p-card class="endpoint-card">
+            <div class="endpoint-header">
+              <span class="method-badge method-get">GET</span>
+              <h3>/shipments/&#123;id&#125;</h3>
+            </div>
+
+            <p>Retrieves detailed information about a specific shipment.</p>
+
+            <h4>Example Request</h4>
+            <div class="code-block">
+              <pre>
+curl "https://app.docsynk.cloud/api/v1/shipments/shp_1a2b3c4d" \
+  -H "Authorization: Bearer YOUR_API_KEY"</pre
+              >
+            </div>
+          </p-card>
+        </section>
+
+        <!-- Update Shipment -->
+        <section id="update-shipment" class="api-section">
+          <p-card class="endpoint-card">
+            <div class="endpoint-header">
+              <span class="method-badge method-put">PUT</span>
+              <h3>/shipments/&#123;id&#125;</h3>
+            </div>
+
+            <p>Updates an existing shipment with new information.</p>
+
+            <h4>Example Request</h4>
+            <div class="code-block">
+              <pre>
+curl -X PUT "https://app.docsynk.cloud/api/v1/shipments/shp_1a2b3c4d" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '&#123;"status": "completed"&#125;'</pre
+              >
+            </div>
+          </p-card>
+        </section>
+
+        <!-- Upload Document -->
+        <section id="upload-document" class="api-section">
+          <p-card class="endpoint-card">
+            <div class="endpoint-header">
+              <span class="method-badge method-post">POST</span>
+              <h3>/documents/upload</h3>
+            </div>
+
+            <p>
+              Uploads a document and associates it with a shipment.
+              Automatically triggers OCR processing.
+            </p>
+
+            <h4>Request (Multipart Form)</h4>
+            <div class="code-block">
+              <pre>
+curl -X POST "https://app.docsynk.cloud/api/v1/documents/upload" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -F "shipment_id=shp_1a2b3c4d" \
+  -F "document_type=bill_of_lading" \
+  -F "file=@/path/to/document.pdf"</pre
+              >
+            </div>
+
+            <h4>Supported Document Types</h4>
+            <ul>
+              <li><code>bill_of_lading</code> - Master/House B/L</li>
+              <li><code>commercial_invoice</code> - CI for customs</li>
+              <li><code>packing_list</code> - Detailed cargo list</li>
+              <li><code>certificate_origin</code> - COO</li>
+              <li><code>dangerous_goods</code> - DG declaration</li>
+              <li><code>customs_entry</code> - Import/Export declaration</li>
+              <li><code>other</code> - Miscellaneous documents</li>
+            </ul>
+
+            <h4>Response</h4>
+            <div class="code-block">
+              <pre>
+&#123;
+  "id": "doc_xyz789",
+  "shipment_id": "shp_1a2b3c4d",
+  "document_type": "bill_of_lading",
+  "filename": "MBOL-2024-001234.pdf",
+  "size_bytes": 245632,
+  "mime_type": "application/pdf",
+  "ocr_status": "processing",
+  "compliance_status": "pending",
+  "upload_url": "https://app.docsynk.cloud/api/v1/documents/doc_xyz789",
+  "created_at": "2024-01-20T14:30:00Z"
+&#125;</pre
+              >
+            </div>
+          </p-card>
+        </section>
+
+        <!-- Get Document -->
+        <section id="get-document" class="api-section">
+          <p-card class="endpoint-card">
+            <div class="endpoint-header">
+              <span class="method-badge method-get">GET</span>
+              <h3>/documents/&#123;id&#125;</h3>
+            </div>
+
+            <p>Retrieves document details and OCR results.</p>
+          </p-card>
+        </section>
+
+        <!-- OCR Status -->
+        <section id="ocr-status" class="api-section">
+          <p-card class="endpoint-card">
+            <div class="endpoint-header">
+              <span class="method-badge method-get">GET</span>
+              <h3>/documents/&#123;id&#125;/ocr</h3>
+            </div>
+
+            <p>
+              Checks the status of OCR processing and retrieves extracted data.
+            </p>
+          </p-card>
+        </section>
+
+        <!-- Check Compliance -->
+        <section id="check-compliance" class="api-section">
+          <p-card class="endpoint-card">
+            <div class="endpoint-header">
+              <span class="method-badge method-post">POST</span>
+              <h3>/compliance/check</h3>
+            </div>
+
+            <p>
+              Runs compliance validation against country-specific requirements.
+            </p>
+
+            <h4>Request Body</h4>
+            <div class="code-block">
+              <pre>
+&#123;
+  "shipment_id": "shp_1a2b3c4d",
+  "jurisdictions": ["US", "CN", "EU"],
+  "check_type": "full"
+&#125;</pre
+              >
+            </div>
+
+            <h4>Response</h4>
+            <div class="code-block">
+              <pre>
+&#123;
+  "overall_status": "failed",
+  "checks": [
+    &#123;
+      "jurisdiction": "US",
+      "status": "failed",
+      "rules": [
+        &#123;
+          "rule_id": "US_ISF_10_2",
+          "description": "ISF 10+2 Filing Required",
+          "status": "missing",
+          "severity": "critical",
+          "message": "ISF must be filed 24 hours before vessel loading"
+        &#125;
+      ]
+    &#125;,
+    &#123;
+      "jurisdiction": "CN",
+      "status": "passed",
+      "rules": []
+    &#125;
+  ],
+  "recommendations": [
+    "File ISF immediately to avoid penalties",
+    "Consider filing Amendment if cargo details change"
+  ]
+&#125;</pre
+              >
+            </div>
+          </p-card>
+        </section>
+
+        <!-- Compliance Rules -->
+        <section id="compliance-rules" class="api-section">
+          <p-card class="endpoint-card">
+            <div class="endpoint-header">
+              <span class="method-badge method-get">GET</span>
+              <h3>/compliance/rules</h3>
+            </div>
+
+            <p>Lists available compliance rules for different jurisdictions.</p>
+          </p-card>
+        </section>
+
+        <!-- Webhooks Setup -->
+        <section id="webhook-setup" class="api-section">
+          <h2>Webhooks</h2>
+          <p>
+            Receive real-time notifications when events occur in your DocSynk
+            account.
+          </p>
+
+          <p-card>
+            <h3>Setting Up Webhooks</h3>
+            <ol>
+              <li>Go to Settings → Webhooks in your dashboard</li>
+              <li>Add your endpoint URL</li>
+              <li>Select events to subscribe to</li>
+              <li>Save and verify the test webhook</li>
+            </ol>
+          </p-card>
+
+          <h3 id="webhook-events" class="mt-4">Available Events</h3>
+
+          <div class="events-table">
+            <table class="w-full">
+              <thead>
+                <tr>
+                  <th>Event</th>
+                  <th>Description</th>
+                  <th>Payload</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>document.uploaded</code></td>
+                  <td>New document uploaded</td>
+                  <td>Document object</td>
+                </tr>
+                <tr>
+                  <td><code>document.processed</code></td>
+                  <td>OCR processing complete</td>
+                  <td>Document + extracted data</td>
+                </tr>
+                <tr>
+                  <td><code>compliance.failed</code></td>
+                  <td>Compliance check failed</td>
+                  <td>Compliance report</td>
+                </tr>
+                <tr>
+                  <td><code>shipment.completed</code></td>
+                  <td>All documents received</td>
+                  <td>Shipment summary</td>
+                </tr>
+                <tr>
+                  <td><code>workflow.approval_needed</code></td>
+                  <td>Approval required</td>
+                  <td>Workflow details</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Webhook Payload Example</h4>
+          <div class="code-block">
+            <pre>
+&#123;
+  "event": "document.processed",
+  "timestamp": "2024-01-20T15:45:00Z",
+  "data": &#123;
+    "document_id": "doc_xyz789",
+    "shipment_id": "shp_1a2b3c4d",
+    "ocr_results": &#123;
+      "bl_number": "MBOL-2024-001234",
+      "shipper": "Shanghai Export Co",
+      "consignee": "US Import Inc",
+      "confidence_score": 0.98
+    &#125;
+  &#125;
+&#125;</pre
+            >
+          </div>
+
+          <h4>Webhook Security</h4>
+          <p>All webhooks include a signature header for verification:</p>
+          <div class="code-block">
+            <pre>
+X-DocSynk-Signature: sha256=3b4c5d6e7f8g9h0i1j2k3l4m5n6o7p8q9r0s1t2u3v4w5x6y7z8</pre
+            >
+          </div>
+        </section>
+
+        <!-- SDKs -->
+        <section class="api-section">
+          <h2>SDKs & Libraries</h2>
+          <p>Official SDKs for popular languages:</p>
+
+          <div class="grid">
+            <div class="col-12 md:col-6 lg:col-3">
+              <p-card class="sdk-card">
+                <div class="text-center">
+                  <i class="pi pi-github sdk-icon"></i>
+                  <h4>Python</h4>
+                  <code>pip install docsynk</code>
+                </div>
+              </p-card>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+              <p-card class="sdk-card">
+                <div class="text-center">
+                  <i class="pi pi-github sdk-icon"></i>
+                  <h4>Node.js</h4>
+                  <code>npm install @docsynk/api</code>
+                </div>
+              </p-card>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+              <p-card class="sdk-card">
+                <div class="text-center">
+                  <i class="pi pi-github sdk-icon"></i>
+                  <h4>Java</h4>
+                  <code>com.docsynk:sdk:1.0</code>
+                </div>
+              </p-card>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+              <p-card class="sdk-card">
+                <div class="text-center">
+                  <i class="pi pi-github sdk-icon"></i>
+                  <h4>C#/.NET</h4>
+                  <code>DocSynk.Client</code>
+                </div>
+              </p-card>
+            </div>
+          </div>
+        </section>
+
+        <!-- Support -->
+        <section class="api-section">
+          <h2>API Support</h2>
+          <p-card class="support-card">
+            <h4>Need Help?</h4>
+            <ul>
+              <li>
+                Email:
+                <a href="mailto:info@synkadia.com" class="text-primary"
+                  >info@synkadia.com</a
+                >
+              </li>
+              <li>Slack: Join our developer community</li>
+              <li>
+                Status:
+                <a
+                  href="https://status.docsynk.cloud"
+                  target="_blank"
+                  class="text-primary"
+                  >status.docsynk.cloud</a
+                >
+              </li>
+            </ul>
+          </p-card>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

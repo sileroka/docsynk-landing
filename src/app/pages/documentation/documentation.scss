@@ -1,0 +1,284 @@
+.documentation-page {
+  min-height: 100vh;
+  background: var(--surface-ground);
+}
+
+.doc-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+// Sidebar
+.doc-sidebar {
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+  background: var(--surface-0);
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid var(--surface-border);
+
+  .sidebar-content {
+    .sidebar-section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-color);
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 0.5rem;
+
+        .sidebar-link {
+          display: block;
+          padding: 0.5rem 0.75rem;
+          color: var(--text-color-secondary);
+          text-decoration: none;
+          border-radius: 6px;
+          transition: all 0.2s;
+          cursor: pointer;
+          font-size: 0.95rem;
+
+          &:hover {
+            background: var(--surface-hover);
+            color: var(--primary-color);
+          }
+
+          &.active {
+            background: var(--primary-50);
+            color: var(--primary-color);
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+
+  // Custom scrollbar
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--surface-50);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--surface-300);
+    border-radius: 3px;
+
+    &:hover {
+      background: var(--surface-400);
+    }
+  }
+}
+
+// Main Content
+.doc-content {
+  max-width: 900px;
+  padding: 0 2rem;
+
+  .doc-main-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  .doc-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-color-secondary);
+    margin-bottom: 3rem;
+  }
+
+  .doc-section {
+    margin-bottom: 4rem;
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--surface-border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary-600);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-color);
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      line-height: 1.8;
+      color: var(--text-color);
+      margin-bottom: 1rem;
+    }
+
+    ul, ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+
+      li {
+        line-height: 1.8;
+        color: var(--text-color);
+        margin-bottom: 0.5rem;
+
+        strong {
+          color: var(--primary-color);
+        }
+      }
+    }
+
+    code {
+      background: var(--surface-100);
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      color: var(--primary-color);
+    }
+  }
+}
+
+// Code Blocks
+.code-block {
+  background: var(--surface-100);
+  border: 1px solid var(--surface-border);
+  border-radius: 6px;
+  padding: 1.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+
+  pre {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-color);
+  }
+}
+
+// Cards
+.quick-start-card,
+.workflow-card,
+.role-card {
+  margin-bottom: 1.5rem;
+
+  h4 {
+    margin-top: 0;
+    color: var(--primary-color);
+  }
+
+  ul, ol {
+    margin-bottom: 0;
+  }
+}
+
+// Confidence Scores
+.confidence-high {
+  color: var(--green-500);
+  font-weight: 600;
+}
+
+.confidence-medium {
+  color: var(--orange-500);
+  font-weight: 600;
+}
+
+.confidence-low {
+  color: var(--red-500);
+  font-weight: 600;
+}
+
+// Support Cards
+.support-card {
+  height: 100%;
+  
+  .support-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+}
+
+// Responsive
+@media (max-width: 991px) {
+  .doc-sidebar {
+    position: static;
+    height: auto;
+    margin-bottom: 2rem;
+  }
+
+  .doc-content {
+    padding: 0 1rem;
+
+    .doc-main-title {
+      font-size: 2rem;
+    }
+
+    .doc-section {
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .doc-container {
+    padding: 1rem;
+  }
+
+  .doc-content {
+    .doc-main-title {
+      font-size: 1.75rem;
+    }
+
+    .doc-subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  .code-block {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+}

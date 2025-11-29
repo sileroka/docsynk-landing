@@ -21,6 +21,14 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/customer-proof/customer-proof').then(m => m.CustomerProof)
   },
   { 
+    path: 'documentation', 
+    loadComponent: () => import('./pages/documentation/documentation').then(m => m.Documentation)
+  },
+  { 
+    path: 'api', 
+    loadComponent: () => import('./pages/api/api').then(m => m.Api)
+  },
+  { 
     path: 'features', 
     loadComponent: () => import('./pages/features/features').then(m => m.Features)
   },

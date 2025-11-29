@@ -1,0 +1,529 @@
+<div class="documentation-page">
+  <div class="doc-container grid">
+    <!-- Sidebar -->
+    <div class="col-12 lg:col-3">
+      <div class="doc-sidebar">
+        <div class="sidebar-content">
+          <h4 class="sidebar-section-title">Getting Started</h4>
+          <ul class="sidebar-menu">
+            <li>
+              <a
+                (click)="scrollToSection('overview')"
+                class="sidebar-link"
+                [class.active]="isActive('overview')"
+                >Overview</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('quick-start')"
+                class="sidebar-link"
+                [class.active]="isActive('quick-start')"
+                >Quick Start</a
+              >
+            </li>
+          </ul>
+
+          <h4 class="sidebar-section-title">Core Features</h4>
+          <ul class="sidebar-menu">
+            <li>
+              <a
+                (click)="scrollToSection('document-upload')"
+                class="sidebar-link"
+                [class.active]="isActive('document-upload')"
+                >Document Upload</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('ocr-processing')"
+                class="sidebar-link"
+                [class.active]="isActive('ocr-processing')"
+                >OCR Processing</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('compliance')"
+                class="sidebar-link"
+                [class.active]="isActive('compliance')"
+                >Compliance Checks</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('workflows')"
+                class="sidebar-link"
+                [class.active]="isActive('workflows')"
+                >Workflows</a
+              >
+            </li>
+          </ul>
+
+          <h4 class="sidebar-section-title">Integrations</h4>
+          <ul class="sidebar-menu">
+            <li>
+              <a
+                (click)="scrollToSection('api-overview')"
+                class="sidebar-link"
+                [class.active]="isActive('api-overview')"
+                >API Overview</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('webhooks')"
+                class="sidebar-link"
+                [class.active]="isActive('webhooks')"
+                >Webhooks</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('edi')"
+                class="sidebar-link"
+                [class.active]="isActive('edi')"
+                >EDI Support</a
+              >
+            </li>
+          </ul>
+
+          <h4 class="sidebar-section-title">Administration</h4>
+          <ul class="sidebar-menu">
+            <li>
+              <a
+                (click)="scrollToSection('user-management')"
+                class="sidebar-link"
+                [class.active]="isActive('user-management')"
+                >User Management</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('security')"
+                class="sidebar-link"
+                [class.active]="isActive('security')"
+                >Security</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="scrollToSection('billing')"
+                class="sidebar-link"
+                [class.active]="isActive('billing')"
+                >Billing</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-12 lg:col-9">
+      <div class="doc-content">
+        <h1 class="doc-main-title">DocSynk Documentation</h1>
+        <p class="doc-subtitle">
+          Complete guide to using DocSynk for logistics document management
+        </p>
+
+        <!-- Overview -->
+        <section id="overview" class="doc-section">
+          <h2>Overview</h2>
+          <p>
+            DocSynk is a specialized document management system built for
+            international logistics companies. It handles bills of lading,
+            customs declarations, shipping manifests, and compliance
+            documentation across multiple jurisdictions.
+          </p>
+
+          <h3>Key Concepts</h3>
+          <ul>
+            <li>
+              <strong>Shipments:</strong> Core organizational unit, groups all
+              documents for a single logistics movement
+            </li>
+            <li>
+              <strong>Documents:</strong> Individual files (PDFs, images, EDI
+              files) attached to shipments
+            </li>
+            <li>
+              <strong>Compliance Rules:</strong> Automated checks against
+              country-specific requirements
+            </li>
+            <li>
+              <strong>Workflows:</strong> Approval chains for document
+              processing
+            </li>
+          </ul>
+        </section>
+
+        <!-- Quick Start -->
+        <section id="quick-start" class="doc-section">
+          <h2>Quick Start</h2>
+          <p-card class="quick-start-card">
+            <h4>1. Create Your First Shipment</h4>
+            <p>Navigate to Shipments → New Shipment. Enter:</p>
+            <ul>
+              <li>Shipment reference (Bill of Lading number)</li>
+              <li>Origin and destination countries</li>
+              <li>Mode of transport</li>
+            </ul>
+          </p-card>
+
+          <p-card class="quick-start-card">
+            <h4>2. Upload Documents</h4>
+            <p>
+              Drag and drop documents or use the upload button. Supported
+              formats:
+            </p>
+            <ul>
+              <li>PDF (bills of lading, invoices)</li>
+              <li>Images (JPG, PNG for packing lists)</li>
+              <li>EDI files (X12, EDIFACT)</li>
+              <li>Excel/CSV (manifest data)</li>
+            </ul>
+          </p-card>
+
+          <p-card class="quick-start-card">
+            <h4>3. Review and Share</h4>
+            <p>
+              Once processed, share with partners using role-based permissions.
+            </p>
+          </p-card>
+        </section>
+
+        <!-- Document Upload -->
+        <section id="document-upload" class="doc-section">
+          <h2>Document Upload</h2>
+
+          <h3>Upload Methods</h3>
+
+          <h4>Web Interface</h4>
+          <p>
+            Drag and drop files directly onto the shipment page or use the
+            upload button.
+          </p>
+
+          <h4>Email Gateway</h4>
+          <p>Forward documents to your unique email address:</p>
+          <div class="code-block">
+            <pre>shipments@your-company.docsynk.cloud</pre>
+          </div>
+          <p>Subject line format: <code>[Shipment-ID] Document Type</code></p>
+
+          <h4>API Upload</h4>
+          <p>Use our REST API for programmatic uploads:</p>
+          <div class="code-block">
+            <pre>
+POST /api/v1/shipments/&#123;shipmentId&#125;/documents
+Content-Type: multipart/form-data
+
+&#123;
+  "file": binary,
+  "type": "bill_of_lading",
+  "metadata": &#123;
+    "origin": "system_name"
+  &#125;
+&#125;</pre
+            >
+          </div>
+
+          <h3>Bulk Operations</h3>
+          <p>Upload multiple documents at once:</p>
+          <ul>
+            <li>ZIP files are automatically extracted</li>
+            <li>Documents are matched to shipments by reference numbers</li>
+            <li>Duplicates are detected and flagged</li>
+          </ul>
+        </section>
+
+        <!-- OCR Processing -->
+        <section id="ocr-processing" class="doc-section">
+          <h2>OCR Processing</h2>
+
+          <h3>Automatic Extraction</h3>
+          <p>
+            DocSynk automatically extracts key data from logistics documents:
+          </p>
+
+          <h4>Bill of Lading Fields</h4>
+          <ul>
+            <li>B/L Number</li>
+            <li>Shipper/Consignee information</li>
+            <li>Port of loading/discharge</li>
+            <li>Container numbers</li>
+            <li>Commodity description</li>
+            <li>Weight and volume</li>
+          </ul>
+
+          <h4>Commercial Invoice Fields</h4>
+          <ul>
+            <li>Invoice number and date</li>
+            <li>Buyer/Seller details</li>
+            <li>HS codes</li>
+            <li>Values and currencies</li>
+            <li>Incoterms</li>
+          </ul>
+
+          <h3>Confidence Scores</h3>
+          <p>Each extracted field includes a confidence score:</p>
+          <ul>
+            <li>
+              <span class="confidence-high">Green (95%+):</span> High
+              confidence, auto-approved
+            </li>
+            <li>
+              <span class="confidence-medium">Orange (80-94%):</span> Review
+              recommended
+            </li>
+            <li>
+              <span class="confidence-low">Red (&lt;80%):</span> Manual
+              verification required
+            </li>
+          </ul>
+        </section>
+
+        <!-- Compliance -->
+        <section id="compliance" class="doc-section">
+          <h2>Compliance Checks</h2>
+
+          <h3>Automated Validations</h3>
+
+          <h4>US Customs (CBP)</h4>
+          <ul>
+            <li>ISF 10+2 filing requirements</li>
+            <li>ACE document standards</li>
+            <li>Partner Government Agency requirements</li>
+          </ul>
+
+          <h4>European Union</h4>
+          <ul>
+            <li>ENS (Entry Summary Declaration)</li>
+            <li>EXS (Exit Summary Declaration)</li>
+            <li>EORI validation</li>
+            <li>Brexit-specific requirements for UK</li>
+          </ul>
+
+          <h4>China Customs</h4>
+          <ul>
+            <li>CCD (China Customs Declaration)</li>
+            <li>CIQ inspection requirements</li>
+            <li>Advance manifest rules</li>
+          </ul>
+
+          <h3>Custom Rules Engine</h3>
+          <p>Create custom compliance rules for your specific needs:</p>
+          <div class="code-block">
+            <pre>
+IF destination_country = "USA" 
+   AND commodity_type = "TEXTILES"
+THEN REQUIRE document_type = "TEXTILE_VISA"</pre
+            >
+          </div>
+        </section>
+
+        <!-- Workflows -->
+        <section id="workflows" class="doc-section">
+          <h2>Workflows</h2>
+
+          <h3>Standard Workflows</h3>
+
+          <p-card class="workflow-card">
+            <h4>Document Approval</h4>
+            <ol>
+              <li>Operations team uploads</li>
+              <li>Compliance review</li>
+              <li>Manager approval (if value > $50k)</li>
+              <li>Release to partners</li>
+            </ol>
+          </p-card>
+
+          <p-card class="workflow-card">
+            <h4>Amendment Process</h4>
+            <ol>
+              <li>Request amendment</li>
+              <li>Original issuer approval</li>
+              <li>Update all linked documents</li>
+              <li>Notify all parties</li>
+            </ol>
+          </p-card>
+
+          <h3>Custom Workflows</h3>
+          <p>
+            Design workflows specific to your operations using our visual
+            workflow builder.
+          </p>
+        </section>
+
+        <!-- API Overview -->
+        <section id="api-overview" class="doc-section">
+          <h2>API Overview</h2>
+          <p>RESTful API for programmatic access to DocSynk.</p>
+
+          <h3>Authentication</h3>
+          <div class="code-block">
+            <pre>
+curl -H "Authorization: Bearer YOUR_API_KEY" \
+     https://app.docsynk.cloud/api/v1/shipments</pre
+            >
+          </div>
+
+          <h3>Common Endpoints</h3>
+          <ul>
+            <li><code>GET /api/v1/shipments</code> - List shipments</li>
+            <li><code>POST /api/v1/shipments</code> - Create shipment</li>
+            <li>
+              <code>POST /api/v1/documents/upload</code> - Upload document
+            </li>
+            <li>
+              <code>GET /api/v1/compliance/check</code> - Run compliance check
+            </li>
+          </ul>
+        </section>
+
+        <!-- Webhooks -->
+        <section id="webhooks" class="doc-section">
+          <h2>Webhooks</h2>
+          <p>
+            Configure webhooks to receive real-time notifications about shipment
+            events.
+          </p>
+
+          <h3>Available Events</h3>
+          <ul>
+            <li><code>shipment.created</code> - New shipment created</li>
+            <li><code>document.uploaded</code> - Document added to shipment</li>
+            <li><code>compliance.passed</code> - Compliance check passed</li>
+            <li><code>compliance.failed</code> - Compliance check failed</li>
+          </ul>
+        </section>
+
+        <!-- EDI Support -->
+        <section id="edi" class="doc-section">
+          <h2>EDI Support</h2>
+          <p>
+            DocSynk supports industry-standard EDI formats for seamless
+            integration with trading partners.
+          </p>
+
+          <h3>Supported Standards</h3>
+          <ul>
+            <li>X12 (ANSI ASC X12)</li>
+            <li>EDIFACT (UN/EDIFACT)</li>
+            <li>XML-based standards (GS1, RosettaNet)</li>
+          </ul>
+        </section>
+
+        <!-- User Management -->
+        <section id="user-management" class="doc-section">
+          <h2>User Management</h2>
+
+          <h3>Role Types</h3>
+
+          <div class="grid">
+            <div class="col-12 md:col-6">
+              <p-card class="role-card">
+                <h4>Internal Roles</h4>
+                <ul>
+                  <li><strong>Admin:</strong> Full system access</li>
+                  <li>
+                    <strong>Manager:</strong> Approve high-value shipments
+                  </li>
+                  <li>
+                    <strong>Operations:</strong> Create and manage shipments
+                  </li>
+                  <li><strong>Viewer:</strong> Read-only access</li>
+                </ul>
+              </p-card>
+            </div>
+            <div class="col-12 md:col-6">
+              <p-card class="role-card">
+                <h4>External Roles</h4>
+                <ul>
+                  <li><strong>Customer:</strong> View their shipments</li>
+                  <li><strong>Carrier:</strong> Upload POD, update status</li>
+                  <li><strong>Customs Broker:</strong> Submit declarations</li>
+                  <li><strong>Partner:</strong> Limited document access</li>
+                </ul>
+              </p-card>
+            </div>
+          </div>
+
+          <h3>Single Sign-On (SSO)</h3>
+          <p>DocSynk supports SSO via:</p>
+          <ul>
+            <li>SAML 2.0</li>
+            <li>OAuth 2.0</li>
+            <li>Active Directory/LDAP</li>
+          </ul>
+        </section>
+
+        <!-- Security -->
+        <section id="security" class="doc-section">
+          <h2>Security</h2>
+          <p>
+            DocSynk employs enterprise-grade security measures to protect your
+            sensitive logistics data.
+          </p>
+
+          <h3>Data Protection</h3>
+          <ul>
+            <li>AES-256 encryption at rest</li>
+            <li>TLS 1.3 encryption in transit</li>
+            <li>Multi-region data redundancy</li>
+            <li>SOC 2 Type II certified</li>
+          </ul>
+        </section>
+
+        <!-- Billing -->
+        <section id="billing" class="doc-section">
+          <h2>Billing</h2>
+          <p>Manage your subscription and billing settings.</p>
+
+          <h3>Payment Methods</h3>
+          <ul>
+            <li>Credit card (Visa, MasterCard, Amex)</li>
+            <li>ACH transfer (annual plans)</li>
+            <li>Wire transfer (Enterprise)</li>
+          </ul>
+
+          <h3>Usage Tracking</h3>
+          <p>Monitor your usage in real-time through the billing dashboard.</p>
+        </section>
+
+        <!-- Support -->
+        <section class="doc-section">
+          <h2>Getting Help</h2>
+
+          <div class="grid">
+            <div class="col-12 md:col-4">
+              <p-card class="support-card">
+                <div class="text-center">
+                  <i class="pi pi-comments support-icon"></i>
+                  <h4>Live Chat</h4>
+                  <p>Available 9am-6pm EST</p>
+                  <p-button label="Start Chat" [outlined]="true" />
+                </div>
+              </p-card>
+            </div>
+            <div class="col-12 md:col-4">
+              <p-card class="support-card">
+                <div class="text-center">
+                  <i class="pi pi-envelope support-icon"></i>
+                  <h4>Email Support</h4>
+                  <p>Response within 4 hours</p>
+                  <p-button
+                    label="Email Us"
+                    [outlined]="true"
+                    routerLink="/contact"
+                  />
+                </div>
+              </p-card>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
