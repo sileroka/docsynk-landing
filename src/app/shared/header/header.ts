@@ -26,17 +26,26 @@ export class Header implements OnInit {
       {
         label: 'Features',
         icon: 'pi pi-star',
-        command: () => this.router.navigate(['/features'])
+        command: () => {
+          this.router.navigate(['/features']);
+          this.isMobileMenuVisible = false;
+        }
       },
       {
         label: 'Pricing',
         icon: 'pi pi-dollar',
-        command: () => this.router.navigate(['/pricing'])
+        command: () => {
+          this.router.navigate(['/pricing']);
+          this.isMobileMenuVisible = false;
+        }
       },
       {
         label: 'ROI Calculator',
         icon: 'pi pi-calculator',
-        command: () => this.router.navigate(['/roi-calculator'])
+        command: () => {
+          this.router.navigate(['/roi-calculator']);
+          this.isMobileMenuVisible = false;
+        }
       },
       {
         label: 'Resources',
@@ -45,34 +54,52 @@ export class Header implements OnInit {
           {
             label: 'Customer Stories',
             icon: 'pi pi-users',
-            command: () => this.router.navigate(['/customer-proof'])
+            command: () => {
+              this.router.navigate(['/customer-proof']);
+              this.isMobileMenuVisible = false;
+            }
           },
           {
             label: 'FAQ',
             icon: 'pi pi-question-circle',
-            command: () => this.router.navigate(['/faq'])
+            command: () => {
+              this.router.navigate(['/faq']);
+              this.isMobileMenuVisible = false;
+            }
           },
           {
             label: 'Documentation',
             icon: 'pi pi-file',
-            command: () => window.open('https://docs.docsynk.cloud', '_blank')
+            command: () => {
+              window.open('https://docs.docsynk.cloud', '_blank');
+              this.isMobileMenuVisible = false;
+            }
           },
           {
             label: 'API',
             icon: 'pi pi-code',
-            command: () => window.open('https://api.docsynk.cloud/docs', '_blank')
+            command: () => {
+              window.open('https://api.docsynk.cloud/docs', '_blank');
+              this.isMobileMenuVisible = false;
+            }
           }
         ]
       },
       {
         label: 'About',
         icon: 'pi pi-info-circle',
-        command: () => this.router.navigate(['/about'])
+        command: () => {
+          this.router.navigate(['/about']);
+          this.isMobileMenuVisible = false;
+        }
       },
       {
         label: 'Contact',
         icon: 'pi pi-envelope',
-        command: () => this.router.navigate(['/contact'])
+        command: () => {
+          this.router.navigate(['/contact']);
+          this.isMobileMenuVisible = false;
+        }
       }
     ];
   }

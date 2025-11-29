@@ -86,10 +86,39 @@
   width: auto;
 }
 
+.mobile-menu-toggle {
+  margin-left: auto;
+}
+
+::ng-deep {
+  .p-drawer {
+    .p-drawer-content {
+      padding: 1.5rem;
+    }
+  }
+  
+  .p-menu {
+    .p-menuitem-link {
+      padding: 1rem;
+      border-radius: 6px;
+      transition: background-color 0.2s;
+      
+      &:hover {
+        background: var(--surface-hover);
+      }
+    }
+    
+    .p-menuitem-icon {
+      margin-right: 0.75rem;
+    }
+  }
+}
+
 // Responsive styles
 @media (max-width: 991px) {
   .header-content {
     padding: 0 1rem;
+    gap: 1rem;
   }
 
   .logo-text {
